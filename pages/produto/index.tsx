@@ -1,36 +1,36 @@
 import { Fragment, useState } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
+import { QuestionMarkCircleIcon, ShoppingBagIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
+import { MagnifyingGlassCircleIcon } from "@heroicons/react/24/outline";
 
 const navigation = {
   pages: [
     { name: "Nossa Empresa", href: "#" },
-    { name: "Nossos Produtos", href: "#" },
     { name: "Fale Conosco", href: "#" },
   ],
 };
 const categories = [
   {
-    name: "Poltronas",
+    name: "New Arrivals",
     href: "#",
-    imageSrc: "/poltronas.jpg",
+    imageSrc: "https://tailwindui.com/img/ecommerce-images/home-page-01-category-01.jpg",
   },
   {
-    name: "Cadeiras",
+    name: "Productivity",
     href: "#",
-    imageSrc: "/cadeiras.jpg",
+    imageSrc: "https://tailwindui.com/img/ecommerce-images/home-page-01-category-02.jpg",
   },
   {
-    name: "Mesa de Jantar",
+    name: "Workspace",
     href: "#",
-    imageSrc: "/mesa.jpg",
+    imageSrc: "https://tailwindui.com/img/ecommerce-images/home-page-01-category-04.jpg",
   },
   {
-    name: "Aparadores",
+    name: "Accessories",
     href: "#",
-    imageSrc: "/aparador.jpg",
+    imageSrc: "https://tailwindui.com/img/ecommerce-images/home-page-01-category-05.jpg",
   },
-  { name: "Sofás", href: "#", imageSrc: "/sofa-2.jpg" },
+  { name: "Sale", href: "#", imageSrc: "https://tailwindui.com/img/ecommerce-images/home-page-01-category-03.jpg" },
 ];
 const collections = [
   {
@@ -128,7 +128,11 @@ export default function Example() {
       <div className="relative bg-gray-900">
         {/* Decorative image and overlay */}
         <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
-          <img src="/sofa.jpg" alt="" className="w-full h-full object-center object-cover" />
+          <img
+            src="https://tailwindui.com/img/ecommerce-images/home-page-01-hero-full-width.jpg"
+            alt=""
+            className="w-full h-full object-center object-cover"
+          />
         </div>
         <div aria-hidden="true" className="absolute inset-0 bg-gray-900 opacity-50" />
 
@@ -143,8 +147,8 @@ export default function Example() {
                     {/* Logo (lg+) */}
                     <div className="hidden lg:flex-1 lg:flex lg:items-center">
                       <a href="#">
-                        <span className="sr-only">Black Home Design</span>
-                        <img className="h-8 w-auto" src="/logo.svg" alt="" />
+                        <span className="sr-only">Workflow</span>
+                        <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark.svg?color=white" alt="" />
                       </a>
                     </div>
 
@@ -171,8 +175,8 @@ export default function Example() {
 
                     {/* Logo (lg-) */}
                     <a href="#" className="lg:hidden">
-                      <span className="sr-only">Black Home Design</span>
-                      <img src="/logo.svg" alt="" className="h-8 w-auto" />
+                      <span className="sr-only">Workflow</span>
+                      <img src="https://tailwindui.com/img/logos/workflow-mark.svg?color=white" alt="" className="h-8 w-auto" />
                     </a>
 
                     <div className="flex-1 flex items-center justify-end">
@@ -190,16 +194,13 @@ export default function Example() {
         </header>
 
         <div className="relative max-w-3xl mx-auto py-32 px-6 flex flex-col items-center text-center sm:py-64 lg:px-0">
-          <h1 className="text-4xl font-extrabold tracking-tight text-white lg:text-6xl">Mobiliário com Estilo</h1>
-          <p className="mt-4 text-xl text-white">
-            Estamos há mais de 20 anos no mercado, e hoje contamos com 2 mil metros quadrados de loja, repletos de móveis, decorações,
-            tapetes, quadros e complementos selecionados através da nossa curadoria exclusiva.
-          </p>
+          <h1 className="text-4xl font-extrabold tracking-tight text-white lg:text-6xl">Titulo do Produto X</h1>
+          <p className="mt-4 text-xl text-white">Uma breve descrição de um produto X!</p>
           <a
             href="#"
             className="mt-8 inline-block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100"
           >
-            Ver Produtos
+            Shop New Arrivals
           </a>
         </div>
       </div>
@@ -240,23 +241,27 @@ export default function Example() {
         <section aria-labelledby="social-impact-heading" className="max-w-7xl mx-auto pt-24 px-4 sm:pt-32 sm:px-6 lg:px-8">
           <div className="relative rounded-lg overflow-hidden">
             <div className="absolute inset-0">
-              <img src="/sala.jpg" alt="" className="w-full h-full object-center object-cover" />
+              <img
+                src="https://tailwindui.com/img/ecommerce-images/home-page-01-feature-section-01.jpg"
+                alt=""
+                className="w-full h-full object-center object-cover"
+              />
             </div>
             <div className="relative bg-gray-900 bg-opacity-75 py-32 px-6 sm:py-40 sm:px-12 lg:px-16">
               <div className="relative max-w-3xl mx-auto flex flex-col items-center text-center">
                 <h2 id="social-impact-heading" className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-                  <span className="block sm:inline">Loja</span>
-                  <span className="block sm:inline"> Física</span>
+                  <span className="block sm:inline">Level up</span>
+                  <span className="block sm:inline">your desk</span>
                 </h2>
                 <p className="mt-3 text-xl text-white">
-                  Venha conhecer nossa loja física e ver os melhores móveis criado pelos melhores designers de interiores do Brasil. Super
-                  desconto todos os dias!
+                  Make your desk beautiful and organized. Post a picture to social media and watch it get more likes than life-changing
+                  announcements. Reflect on the shallow nature of existence. At least you have a really nice desk setup.
                 </p>
                 <a
                   href="#"
                   className="mt-8 w-full block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto"
                 >
-                  Ver Produtos
+                  Shop Workspace
                 </a>
               </div>
             </div>
@@ -282,12 +287,6 @@ export default function Example() {
                 <h3 className="mt-4 text-base font-semibold text-gray-900">{collection.name}</h3>
                 <p className="mt-2 text-sm text-gray-500">{collection.description}</p>
                 <p className="mt-2 text-2xl font-bold text-gray-500">{collection.price}</p>
-                <a
-                  href="#"
-                  className="mt-8 w-full block bg-gray-800 border border-transparent rounded-md py-3 px-8 text-base font-medium text-white hover:bg-gray-500 sm:w-auto"
-                >
-                  Detalhes do Produto
-                </a>
               </a>
             ))}
           </div>
@@ -297,22 +296,26 @@ export default function Example() {
         <section aria-labelledby="comfort-heading" className="max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
           <div className="relative rounded-lg overflow-hidden">
             <div className="absolute inset-0">
-              <img src="/sala-2.jpg" alt="" className="w-full h-full object-center object-cover" />
+              <img
+                src="https://tailwindui.com/img/ecommerce-images/home-page-01-feature-section-02.jpg"
+                alt=""
+                className="w-full h-full object-center object-cover"
+              />
             </div>
             <div className="relative bg-gray-900 bg-opacity-75 py-32 px-6 sm:py-40 sm:px-12 lg:px-16">
               <div className="relative max-w-3xl mx-auto flex flex-col items-center text-center">
                 <h2 id="comfort-heading" className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-                  Faça sua encomenda!
+                  Simple productivity
                 </h2>
                 <p className="mt-3 text-xl text-white">
-                  Precisa de um projeto especial ou algum móvel sobre encomenda? Entre em contato conosco e faça um orçamento sem
-                  compromisso com nossa equipe de atendimento!
+                  Endless tasks, limited hours, a single piece of paper. Not really a haiku, but we're doing our best here. No kanban
+                  boards, burndown charts, or tangled flowcharts with our Focus system. Just the undeniable urge to fill empty circles.
                 </p>
                 <a
                   href="#"
                   className="mt-8 w-full block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto"
                 >
-                  Quero encomendar
+                  Shop Focus
                 </a>
               </div>
             </div>
