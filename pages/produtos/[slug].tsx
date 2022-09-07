@@ -10,29 +10,18 @@ const navigation = {
     { name: "Fale Conosco", href: "#" },
   ],
 };
-const categories = [
-  {
-    name: "Poltronas",
-    href: "#",
-    imageSrc: "/poltronas.jpg",
-  },
-  {
-    name: "Cadeiras",
-    href: "#",
-    imageSrc: "/cadeiras.jpg",
-  },
-  {
-    name: "Mesa de Jantar",
-    href: "#",
-    imageSrc: "/mesa.jpg",
-  },
-  {
-    name: "Aparadores",
-    href: "#",
-    imageSrc: "/aparador.jpg",
-  },
-  { name: "Sofás", href: "#", imageSrc: "/sofa-2.jpg" },
-];
+
+const product = {
+  name: "Zip Tote Basket",
+  price: "R$220,00",
+  rating: 3.9,
+  href: "#",
+  description:
+    "The Zip Tote Basket is the perfect midpoint between shopping tote and comfy backpack. With convertible straps, you can hand carry, should sling, or backpack this convenient and spacious bag. The zip top and durable canvas construction keeps your goods protected for all-day use. The Zip Tote Basket is the perfect midpoint between shopping tote and comfy backpack. With convertible straps, you can hand carry, should sling, or backpack this convenient and spacious bag. The zip top and durable canvas construction keeps your goods protected for all-day use.",
+  imageSrc: "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-01.jpg",
+  imageAlt: "Back angled view with bag open and handles to the side.",
+};
+
 const collections = [
   {
     name: "Handcrafted Collection",
@@ -40,7 +29,7 @@ const collections = [
     imageSrc: "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-01.jpg",
     imageAlt: "Brown leather key ring with brass metal loops and rivets on wood table.",
     description: "Keep your phone, keys, and wallet together, so you can lose everything at once.",
-    price: "R$ 100",
+    price: "R$100,00",
   },
   {
     name: "Organized Desk Collection",
@@ -48,7 +37,7 @@ const collections = [
     imageSrc: "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-02.jpg",
     imageAlt: "Natural leather mouse pad on white desk next to porcelain mug and keyboard.",
     description: "The rest of the house will still be a mess, but your desk will look great.",
-    price: "R$ 100",
+    price: "R$120,00",
   },
   {
     name: "Focus Collection",
@@ -56,13 +45,9 @@ const collections = [
     imageSrc: "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-03.jpg",
     imageAlt: "Person placing task list card into walnut card holder next to felt carrying case on leather desk pad.",
     description: "Be more productive than enterprise project managers with a single piece of paper.",
-    price: "R$ 100",
+    price: "R$100,00",
   },
 ];
-
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -129,7 +114,11 @@ export default function Example() {
       <div className="relative bg-gray-900">
         {/* Decorative image and overlay */}
         <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
-          <img src="/sofa.jpg" alt="" className="w-full h-full object-center object-cover" />
+          <img
+            src="https://tailwindui.com/img/ecommerce-images/home-page-01-hero-full-width.jpg"
+            alt=""
+            className="w-full h-full object-center object-cover"
+          />
         </div>
         <div aria-hidden="true" className="absolute inset-0 bg-gray-900 opacity-50" />
 
@@ -145,7 +134,7 @@ export default function Example() {
                     <div className="hidden lg:flex-1 lg:flex lg:items-center">
                       <a href="#">
                         <span className="sr-only">Black Home Design</span>
-                        <img className="h-8 w-auto" src="/logo.svg" alt="" />
+                        <img src="/logo.svg" alt="" className="h-8 w-auto" />
                       </a>
                     </div>
 
@@ -172,8 +161,8 @@ export default function Example() {
 
                     {/* Logo (lg-) */}
                     <a href="#" className="lg:hidden">
-                      <span className="sr-only">Black Home Design</span>
-                      <img src="/logo.svg" alt="" className="h-8 w-auto" />
+                      <span className="sr-only">Workflow</span>
+                      <img src="https://tailwindui.com/img/logos/workflow-mark.svg?color=white" alt="" className="h-8 w-auto" />
                     </a>
 
                     <div className="flex-1 flex items-center justify-end">
@@ -190,87 +179,74 @@ export default function Example() {
           </nav>
         </header>
 
-        <div className="relative max-w-3xl mx-auto py-32 px-6 flex flex-col items-center text-center sm:py-64 lg:px-0">
-          <h1 className="text-4xl font-extrabold tracking-tight text-white lg:text-6xl">Mobiliário com Estilo</h1>
-          <p className="mt-4 text-xl text-white">
-            Estamos há mais de 20 anos no mercado, e hoje contamos com 2 mil metros quadrados de loja, repletos de móveis, decorações,
-            tapetes, quadros e complementos selecionados através da nossa curadoria exclusiva.
-          </p>
-          <a
-            href="#"
-            className="mt-8 inline-block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100"
-          >
-            Ver Produtos
-          </a>
+        <div className="relative max-w-3xl mx-auto py-20 px-6 flex flex-col items-center text-center sm:py-20 lg:px-0">
+          <h1 className="text-4xl font-extrabold tracking-tight text-white lg:text-6xl">Titulo do Produto X</h1>
+          <p className="mt-4 text-xl text-white">Uma breve descrição de um produto X!</p>
         </div>
       </div>
 
       <main>
         {/* Category section */}
-        <section aria-labelledby="category-heading" className="pt-24 sm:pt-32 xl:max-w-7xl xl:mx-auto xl:px-8">
-          <div className="px-4 sm:px-6 sm:flex sm:items-center sm:justify-between lg:px-8 xl:px-0">
-            <h2 id="category-heading" className="text-2xl font-extrabold tracking-tight text-gray-900">
-              Categorias
-            </h2>
-          </div>
 
-          <div className="mt-4 flow-root">
-            <div className="-my-2">
-              <div className="box-content py-2 relative h-80 overflow-x-auto xl:overflow-visible">
-                <div className="absolute min-w-screen-xl px-4 flex space-x-8 sm:px-6 lg:px-8 xl:relative xl:px-0 xl:space-x-0 xl:grid xl:grid-cols-5 xl:gap-x-8">
-                  {categories.map((category) => (
-                    <a
-                      key={category.name}
-                      href={category.href}
-                      className="relative w-56 h-80 rounded-lg p-6 flex flex-col overflow-hidden hover:opacity-75 xl:w-auto"
-                    >
-                      <span aria-hidden="true" className="absolute inset-0">
-                        <img src={category.imageSrc} alt="" className="w-full h-full object-center object-cover" />
-                      </span>
-                      <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50" />
-                      <span className="relative mt-auto text-center text-xl font-bold text-white">{category.name}</span>
-                    </a>
-                  ))}
+        <section aria-labelledby="category-heading" className="pt-24 sm:pt-32 xl:max-w-7xl xl:mx-auto">
+          <div className="flex text-center md:block md:px-2 lg:px-4" style={{ fontSize: 0 }}>
+            <div className="flex text-base text-left transform transition w-full md:inline-block md:px-4 md:my-8 md:align-middle">
+              <div className="w-full relative flex items-center bg-gray-100 px-4 pt-14 pb-8 overflow-hidden sm:px-6 sm:pt-8 md:p-6 lg:p-8">
+                <div className="w-full grid grid-cols-1 gap-y-8 gap-x-6 items-start sm:grid-cols-12 lg:gap-x-8">
+                  <div className="sm:col-span-4 lg:col-span-5">
+                    <div className="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
+                      <img src={product.imageSrc} alt={product.imageAlt} className="object-center object-cover" />
+                    </div>
+                  </div>
+                  <div className="sm:col-span-8 lg:col-span-7">
+                    <h2 className="text-4xl font-extrabold text-gray-900 sm:pr-12">{product.name}</h2>
+
+                    <section aria-labelledby="information-heading" className="mt-3">
+                      <h3 id="information-heading" className="sr-only">
+                        Product information
+                      </h3>
+
+                      <p className="text-2xl text-gray-900">{product.price}</p>
+
+                      <div className="mt-6">
+                        <h4 className="sr-only">Description</h4>
+
+                        <p className="text-sm text-gray-700">{product.description}</p>
+                      </div>
+                    </section>
+
+                    <section aria-labelledby="options-heading" className="mt-6">
+                      <h3 id="options-heading" className="sr-only">
+                        Product options
+                      </h3>
+
+                      <form>
+                        <div className="mt-6">
+                          <button
+                            type="submit"
+                            className="w-full bg-gray-800 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-800"
+                          >
+                            Fazer uma encomenda
+                          </button>
+                        </div>
+                      </form>
+                    </section>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Featured section */}
-        <section aria-labelledby="social-impact-heading" className="max-w-7xl mx-auto pt-24 px-4 sm:pt-32 sm:px-6 lg:px-8">
-          <div className="relative rounded-lg overflow-hidden">
-            <div className="absolute inset-0">
-              <img src="/sala.jpg" alt="" className="w-full h-full object-center object-cover" />
-            </div>
-            <div className="relative bg-gray-900 bg-opacity-75 py-32 px-6 sm:py-40 sm:px-12 lg:px-16">
-              <div className="relative max-w-3xl mx-auto flex flex-col items-center text-center">
-                <h2 id="social-impact-heading" className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-                  <span className="block sm:inline">Loja</span>
-                  <span className="block sm:inline"> Física</span>
-                </h2>
-                <p className="mt-3 text-xl text-white">
-                  Venha conhecer nossa loja física e ver os melhores móveis criado pelos melhores designers de interiores do Brasil. Super
-                  desconto todos os dias!
-                </p>
-                <a
-                  href="#"
-                  className="mt-8 w-full block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto"
-                >
-                  Ver Produtos
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Collection section */}
+
         <section aria-labelledby="collection-heading" className="max-w-xl mx-auto pt-24 px-4 sm:pt-32 sm:px-6 lg:max-w-7xl lg:px-8">
           <h2 id="collection-heading" className="text-2xl font-extrabold tracking-tight text-gray-900">
-            Nossos Produtos
+            Produtos em destaque
           </h2>
-          <p className="mt-4 text-base text-gray-500">Acesse com exclusividade nossos últimos lançamentos de nossos produtos. Aproveite!</p>
-
+          <p className="mt-4 text-base text-gray-500">
+            Veja os produtos mais vendidos em nossa loj. Entre em contato hoje mesmo e faça a sua encomenda!
+          </p>
           <div className="mt-10 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-8">
             {collections.map((collection) => (
               <div key={collection.name} className="group block">
@@ -326,7 +302,7 @@ export default function Example() {
         </h2>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border-t border-gray-800 py-10">
-            <p className="text-sm text-gray-400">Copyright &copy; 2022 Black Home Design.</p>
+            <p className="text-sm text-gray-400">Copyright &copy; 2021 Black Home Design.</p>
           </div>
         </div>
       </footer>
