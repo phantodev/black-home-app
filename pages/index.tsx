@@ -2,6 +2,7 @@ import { Fragment, useState } from "react";
 import Link from "next/link";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
+import Footer from "./components/footer";
 
 const navigation = {
   pages: [
@@ -154,7 +155,7 @@ export default function Example() {
                       <Popover.Group className="px-4 bottom-0 inset-x-0">
                         <div className="h-full flex justify-center space-x-8">
                           {navigation.pages.map((page) => (
-                            <a key={page.name} href={page.href} className="flex items-center text-sm font-medium text-white">
+                            <a key={page.name} href={page.href} className="flex items-center text-lg font-medium text-white">
                               {page.name}
                             </a>
                           ))}
@@ -175,14 +176,6 @@ export default function Example() {
                       <span className="sr-only">Black Home Design</span>
                       <img src="/logo.svg" alt="" className="h-8 w-auto" />
                     </a>
-
-                    <div className="flex-1 flex items-center justify-end">
-                      <a href="#" className="hidden text-sm font-medium text-white lg:block">
-                        Rua Padre Agostinho, 154 - Centro
-                      </a>
-
-                      <div className="flex items-center lg:ml-8"></div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -196,18 +189,12 @@ export default function Example() {
             Estamos há mais de 20 anos no mercado, e hoje contamos com 2 mil metros quadrados de loja, repletos de móveis, decorações,
             tapetes, quadros e complementos selecionados através da nossa curadoria exclusiva.
           </p>
-          <a
-            href="#"
-            className="mt-8 inline-block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100"
-          >
-            Ver Produtos
-          </a>
         </div>
       </div>
 
       <main>
         {/* Category section */}
-        <section aria-labelledby="category-heading" className="pt-24 sm:pt-32 xl:max-w-7xl xl:mx-auto xl:px-8">
+        <section aria-labelledby="category-heading" className="pt-12 sm:pt-12 xl:max-w-7xl xl:mx-auto xl:px-8">
           <div className="px-4 sm:px-6 sm:flex sm:items-center sm:justify-between lg:px-8 xl:px-0">
             <h2 id="category-heading" className="text-2xl font-extrabold tracking-tight text-gray-900">
               Categorias
@@ -238,7 +225,7 @@ export default function Example() {
         </section>
 
         {/* Featured section */}
-        <section aria-labelledby="social-impact-heading" className="max-w-7xl mx-auto pt-24 px-4 sm:pt-32 sm:px-6 lg:px-8">
+        <section aria-labelledby="social-impact-heading" className="max-w-7xl mx-auto pt-12 px-4 sm:pt-12 sm:px-6 lg:px-8">
           <div className="relative rounded-lg overflow-hidden">
             <div className="absolute inset-0">
               <img src="/sala.jpg" alt="" className="w-full h-full object-center object-cover" />
@@ -265,7 +252,7 @@ export default function Example() {
         </section>
 
         {/* Collection section */}
-        <section aria-labelledby="collection-heading" className="max-w-xl mx-auto pt-24 px-4 sm:pt-32 sm:px-6 lg:max-w-7xl lg:px-8">
+        <section aria-labelledby="collection-heading" className="max-w-xl mx-auto pt-12 px-4 sm:pt-12 sm:px-6 lg:max-w-7xl lg:px-8">
           <h2 id="collection-heading" className="text-2xl font-extrabold tracking-tight text-gray-900">
             Nossos Produtos
           </h2>
@@ -294,7 +281,7 @@ export default function Example() {
         </section>
 
         {/* Featured section */}
-        <section aria-labelledby="comfort-heading" className="max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+        <section aria-labelledby="comfort-heading" className="max-w-7xl mx-auto py-12 px-4 sm:py-12 sm:px-6 lg:px-8">
           <div className="relative rounded-lg overflow-hidden">
             <div className="absolute inset-0">
               <img src="/sala-2.jpg" alt="" className="w-full h-full object-center object-cover" />
@@ -324,11 +311,7 @@ export default function Example() {
         <h2 id="footer-heading" className="sr-only">
           Footer
         </h2>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="border-t border-gray-800 py-10">
-            <p className="text-sm text-gray-400">Copyright &copy; 2022 Black Home Design.</p>
-          </div>
-        </div>
+        <Footer />
       </footer>
     </div>
   );

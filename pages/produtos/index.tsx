@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
+import Footer from "../components/footer";
 
 const navigation = {
   pages: [
@@ -343,7 +344,7 @@ export default function Example() {
         </section>
 
         {/* Featured section */}
-        <section aria-labelledby="comfort-heading" className="max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+        <section aria-labelledby="comfort-heading" className="max-w-7xl mx-auto py-12 px-4 sm:py-12 sm:px-6 lg:px-8">
           <div className="relative rounded-lg overflow-hidden">
             <div className="absolute inset-0">
               <img src="/sala-2.jpg" alt="" className="w-full h-full object-center object-cover" />
@@ -373,11 +374,7 @@ export default function Example() {
         <h2 id="footer-heading" className="sr-only">
           Footer
         </h2>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="border-t border-gray-800 py-10">
-            <p className="text-sm text-gray-400">Copyright &copy; 2022 Black Home Design.</p>
-          </div>
-        </div>
+        <Footer />
       </footer>
     </div>
   );

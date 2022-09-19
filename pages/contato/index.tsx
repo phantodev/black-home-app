@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import { MapIcon, PhoneIcon } from "@heroicons/react/24/outline";
+import Footer from "../components/footer";
 
 const navigation = {
   pages: [
@@ -295,7 +296,7 @@ export default function Example() {
 
         {/* Collection section */}
 
-        <section aria-labelledby="collection-heading" className="max-w-xl mx-auto pt-24 px-4 sm:pt-32 sm:px-6 lg:max-w-7xl lg:px-8">
+        <section aria-labelledby="collection-heading" className="max-w-xl mx-auto pt-12 px-4 sm:pt-12 sm:px-6 lg:max-w-7xl lg:px-8">
           <h2 id="collection-heading" className="text-2xl font-extrabold tracking-tight text-gray-900">
             Produtos em destaque
           </h2>
@@ -325,7 +326,7 @@ export default function Example() {
         </section>
 
         {/* Featured section */}
-        <section aria-labelledby="comfort-heading" className="max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+        <section aria-labelledby="comfort-heading" className="max-w-7xl mx-auto py-12 px-4 sm:py-12 sm:px-6 lg:px-8">
           <div className="relative rounded-lg overflow-hidden">
             <div className="absolute inset-0">
               <img src="/sala-2.jpg" alt="" className="w-full h-full object-center object-cover" />
@@ -355,11 +356,7 @@ export default function Example() {
         <h2 id="footer-heading" className="sr-only">
           Footer
         </h2>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="border-t border-gray-800 py-10">
-            <p className="text-sm text-gray-400">Copyright &copy; 2021 Black Home Design.</p>
-          </div>
-        </div>
+        <Footer />
       </footer>
     </div>
   );

@@ -2,6 +2,7 @@ import { Fragment, useState } from "react";
 import Link from "next/link";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
+import Footer from "../components/footer";
 
 const navigation = {
   pages: [
@@ -188,7 +189,7 @@ export default function Example() {
       <main>
         {/* Category section */}
 
-        <section aria-labelledby="category-heading" className="pt-24 sm:pt-32 xl:max-w-7xl xl:mx-auto">
+        <section aria-labelledby="category-heading" className="pt-12 sm:pt-12 xl:max-w-7xl xl:mx-auto">
           <div className="flex text-center md:block md:px-2 lg:px-4" style={{ fontSize: 0 }}>
             <div className="flex text-base text-left transform transition w-full md:inline-block md:px-4 md:my-8 md:align-middle">
               <div className="w-full relative flex items-center bg-gray-100 px-4 pt-14 pb-8 overflow-hidden sm:px-6 sm:pt-8 md:p-6 lg:p-8">
@@ -240,7 +241,7 @@ export default function Example() {
 
         {/* Collection section */}
 
-        <section aria-labelledby="collection-heading" className="max-w-xl mx-auto pt-24 px-4 sm:pt-32 sm:px-6 lg:max-w-7xl lg:px-8">
+        <section aria-labelledby="collection-heading" className="max-w-xl mx-auto pt-12 px-4 sm:pt-12 sm:px-6 lg:max-w-7xl lg:px-8">
           <h2 id="collection-heading" className="text-2xl font-extrabold tracking-tight text-gray-900">
             Produtos em destaque
           </h2>
@@ -270,7 +271,7 @@ export default function Example() {
         </section>
 
         {/* Featured section */}
-        <section aria-labelledby="comfort-heading" className="max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+        <section aria-labelledby="comfort-heading" className="max-w-7xl mx-auto py-12 px-4 sm:py-12 sm:px-6 lg:px-8">
           <div className="relative rounded-lg overflow-hidden">
             <div className="absolute inset-0">
               <img src="/sala-2.jpg" alt="" className="w-full h-full object-center object-cover" />
@@ -300,11 +301,7 @@ export default function Example() {
         <h2 id="footer-heading" className="sr-only">
           Footer
         </h2>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="border-t border-gray-800 py-10">
-            <p className="text-sm text-gray-400">Copyright &copy; 2021 Black Home Design.</p>
-          </div>
-        </div>
+        <Footer />
       </footer>
     </div>
   );
