@@ -4,11 +4,21 @@ import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import Footer from "./components/footer";
 
+/* This example requires Tailwind CSS v2.0+ */
+const stats = [
+  { label: 'Founded', value: '2021' },
+  { label: 'Employees', value: '5' },
+  { label: 'Beta Users', value: '521' },
+  { label: 'Raised', value: '$25M' },
+]
+
+
 const navigation = {
   pages: [
-    { name: "Nossa Empresa", href: "#" },
-    { name: "Nossos Produtos", href: "#" },
-    { name: "Fale Conosco", href: "#" },
+    { name: "Home", href: "#" },
+    { name: "Pronta Entrega", href: "#" },
+    { name: "Consultoria", href: "#" },
+    { name: "Contato", href: "#" },
   ],
 };
 const categories = [
@@ -141,16 +151,13 @@ export default function Example() {
             <div className="backdrop-blur-md backdrop-filter bg-opacity-10 bg-white">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div>
-                  <div className="h-16 flex items-center justify-between">
+                  <div className="h-40 flex items-center justify-between">
                     {/* Logo (lg+) */}
-                    <div className="hidden lg:flex-1 lg:flex lg:items-center">
+                    <div className="hidden lg:flex-1 lg:flex lg:items-center lg:justify-center lg:my-10">
                       <a href="#">
                         <span className="sr-only">Black Home Design</span>
-                        <img className="h-8 w-auto" src="/logo.svg" alt="" />
-                      </a>
-                    </div>
-
-                    <div className="hidden h-full lg:flex">
+                        <div className="lg:flex-1 lg:flex lg:justify-center"><img className="h-24 w-auto" src="/logo.svg" alt="" /></div>
+                        <div className="hidden h-full lg:flex">
                       {/* Flyout menus */}
                       <Popover.Group className="px-4 bottom-0 inset-x-0">
                         <div className="h-full flex justify-center space-x-8">
@@ -162,6 +169,10 @@ export default function Example() {
                         </div>
                       </Popover.Group>
                     </div>
+                      </a>
+                    </div>
+
+                    
 
                     {/* Mobile menu and search (lg-) */}
                     <div className="flex-1 flex items-center lg:hidden">
@@ -195,8 +206,8 @@ export default function Example() {
       <main>
         {/* Category section */}
         <section aria-labelledby="category-heading" className="pt-12 sm:pt-12 xl:max-w-7xl xl:mx-auto xl:px-8">
-          <div className="px-4 sm:px-6 sm:flex sm:items-center sm:justify-between lg:px-8 xl:px-0">
-            <h2 id="category-heading" className="text-2xl font-extrabold tracking-tight text-gray-900">
+          <div className="px-4 sm:px-6 lg:px-8 xl:px-0 flex justify-center">
+            <h2 id="category-heading" className="text-3xl font-extrabold tracking-tight text-gray-900">
               Categorias
             </h2>
           </div>
@@ -224,39 +235,12 @@ export default function Example() {
           </div>
         </section>
 
-        {/* Featured section */}
-        <section aria-labelledby="social-impact-heading" className="max-w-7xl mx-auto pt-12 px-4 sm:pt-12 sm:px-6 lg:px-8">
-          <div className="relative rounded-lg overflow-hidden">
-            <div className="absolute inset-0">
-              <img src="/sala.jpg" alt="" className="w-full h-full object-center object-cover" />
-            </div>
-            <div className="relative bg-gray-900 bg-opacity-75 py-32 px-6 sm:py-40 sm:px-12 lg:px-16">
-              <div className="relative max-w-3xl mx-auto flex flex-col items-center text-center">
-                <h2 id="social-impact-heading" className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-                  <span className="block sm:inline">Loja</span>
-                  <span className="block sm:inline"> Física</span>
-                </h2>
-                <p className="mt-3 text-xl text-white">
-                  Venha conhecer nossa loja física e ver os melhores móveis criado pelos melhores designers de interiores do Brasil. Super
-                  desconto todos os dias!
-                </p>
-                <a
-                  href="#"
-                  className="mt-8 w-full block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto"
-                >
-                  Ver Produtos
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Collection section */}
         <section aria-labelledby="collection-heading" className="max-w-xl mx-auto pt-12 px-4 sm:pt-12 sm:px-6 lg:max-w-7xl lg:px-8">
-          <h2 id="collection-heading" className="text-2xl font-extrabold tracking-tight text-gray-900">
-            Nossos Produtos
+          <h2 id="collection-heading" className="text-3xl font-extrabold tracking-tight text-gray-900 flex justify-center">
+            Produtos em Estoque
           </h2>
-          <p className="mt-4 text-base text-gray-500">Acesse com exclusividade nossos últimos lançamentos de nossos produtos. Aproveite!</p>
+          <p className="mt-4 text-base text-gray-500 text-center">Acesse com exclusividade nossos últimos lançamentos de nossos produtos. Aproveite!</p>
 
           <div className="mt-10 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-8">
             {collections.map((collection) => (
@@ -280,20 +264,117 @@ export default function Example() {
           </div>
         </section>
 
+                {/* Featured section */}
+                <section aria-labelledby="social-impact-heading" className="max-w-7xl mx-auto pt-12 px-4 sm:pt-12 sm:px-6 lg:px-8">
+          <div className="relative rounded-lg overflow-hidden">
+            <div className="absolute inset-0">
+              <img src="/sala.jpg" alt="" className="w-full h-full object-center object-cover" />
+            </div>
+            <div className="relative bg-gray-900 bg-opacity-25 py-32 px-6 sm:py-40 sm:px-12 lg:px-16">
+              <div className="relative max-w-3xl mx-auto flex flex-col items-center text-center">
+                <h2 id="social-impact-heading" className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+                  <span className="block sm:inline">Galeria em 3d</span>
+                </h2>
+                <p className="mt-3 text-xl text-white">
+                  Visite a nossa galeria em 3d dos movéis criados por nós e surpeenda-se!
+                </p>
+                <a
+                  href="#"
+                  className="mt-8 w-full block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto"
+                >
+                  Ver Galeria
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Featured section */}
+        <section aria-labelledby="comfort-heading" className="max-w-7xl mx-auto py-6 px-4">
+        <div className="relative bg-white py-10">
+      <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
+        <div className="relative sm:py-16 lg:py-0">
+          <div aria-hidden="true" className="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen">
+            <div className="absolute inset-y-0 right-1/2 w-full bg-gray-50 rounded-r-3xl lg:right-72" />
+            <svg
+              className="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-auto lg:top-12"
+              width={404}
+              height={392}
+              fill="none"
+              viewBox="0 0 404 392"
+            >
+              <defs>
+                <pattern
+                  id="02f20b47-fd69-4224-a62a-4c9de5c763f7"
+                  x={0}
+                  y={0}
+                  width={20}
+                  height={20}
+                  patternUnits="userSpaceOnUse"
+                >
+                  <rect x={0} y={0} width={4} height={4} className="text-gray-200" fill="currentColor" />
+                </pattern>
+              </defs>
+              <rect width={404} height={392} fill="url(#02f20b47-fd69-4224-a62a-4c9de5c763f7)" />
+            </svg>
+          </div>
+          <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0 lg:max-w-none lg:py-20">
+            {/* Testimonial card*/}
+            <div className="relative pt-64 pb-64 rounded-2xl shadow-xl overflow-hidden">
+              <img
+                className="absolute inset-0 h-full w-full object-cover"
+                src="https://reformafacil.app/static/images/categories/marceneiro.jpg"
+                alt=""
+              />
+              <div className="absolute" />
+            </div>
+          </div>
+        </div>
+
+        <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0">
+          {/* Content area */}
+          <div className="pt-12 sm:pt-16 lg:pt-20">
+            <h2 className="text-3xl text-gray-900 font-extrabold tracking-tight sm:text-4xl">
+              Sobre Nós
+            </h2>
+            <div className="mt-6 text-gray-500 space-y-6">
+              <p className="text-lg">
+                Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum urna sed consectetur neque tristique
+                pellentesque. Blandit amet, sed aenean erat arcu morbi. Cursus faucibus nunc nisl netus morbi vel
+                porttitor vitae ut. Amet vitae fames senectus vitae.
+              </p>
+              <p className="text-base leading-7">
+                Sollicitudin tristique eros erat odio sed vitae, consequat turpis elementum. Lorem nibh vel, eget
+                pretium arcu vitae. Eros eu viverra donec ut volutpat donec laoreet quam urna. Sollicitudin tristique
+                eros erat odio sed vitae, consequat turpis elementum. Lorem nibh vel, eget pretium arcu vitae. Eros eu
+                viverra donec ut volutpat donec laoreet quam urna.
+              </p>
+              <p className="text-base leading-7">
+                Rhoncus nisl, libero egestas diam fermentum dui. At quis tincidunt vel ultricies. Vulputate aliquet
+                velit faucibus semper. Pellentesque in venenatis vestibulum consectetur nibh id. In id ut tempus
+                egestas. Enim sit aliquam nec, a. Morbi enim fermentum lacus in. Viverra.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+        </section>
+
         {/* Featured section */}
         <section aria-labelledby="comfort-heading" className="max-w-7xl mx-auto py-12 px-4 sm:py-12 sm:px-6 lg:px-8">
           <div className="relative rounded-lg overflow-hidden">
             <div className="absolute inset-0">
               <img src="/sala-2.jpg" alt="" className="w-full h-full object-center object-cover" />
             </div>
-            <div className="relative bg-gray-900 bg-opacity-75 py-32 px-6 sm:py-40 sm:px-12 lg:px-16">
+            <div className="relative bg-gray-900 bg-opacity-25 py-32 px-6 sm:py-40 sm:px-12 lg:px-16">
               <div className="relative max-w-3xl mx-auto flex flex-col items-center text-center">
                 <h2 id="comfort-heading" className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-                  Faça sua encomenda!
+                  Faça uma consultoria!
                 </h2>
                 <p className="mt-3 text-xl text-white">
-                  Precisa de um projeto especial ou algum móvel sobre encomenda? Entre em contato conosco e faça um orçamento sem
-                  compromisso com nossa equipe de atendimento!
+                  Precisa de um projeto especial ou algum móvel sobre encomenda? Entre em contato conosco e faça uma consultoria para seu projeto de design de interiores personalizado ou aquele móvel diferenciado que você sempre sonhou em ter em sua casa.
                 </p>
                 <a
                   href="#"
