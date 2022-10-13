@@ -140,7 +140,7 @@ export default function Example() {
       <div className="relative bg-gray-900">
         {/* Decorative image and overlay */}
         <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
-          <img src="/sofa.jpg" alt="" className="w-full h-full object-center object-cover" />
+          <img src="/banner.jpg" alt="" className="w-full h-full object-center object-cover" />
         </div>
         <div aria-hidden="true" className="absolute inset-0 bg-gray-900 opacity-50" />
 
@@ -151,7 +151,7 @@ export default function Example() {
             <div className="backdrop-blur-md backdrop-filter bg-opacity-10 bg-white">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div>
-                  <div className="h-40 flex items-center justify-between">
+                  <div className="h-20 lg:h-40 flex items-center justify-between">
                     {/* Logo (lg+) */}
                     <div className="hidden lg:flex-1 lg:flex lg:items-center lg:justify-center lg:my-10">
                       <a href="#">
