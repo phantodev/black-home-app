@@ -2,7 +2,6 @@ import { Fragment, useState } from "react";
 import Link from "next/link";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
-import { MapIcon, PhoneIcon } from "@heroicons/react/24/outline";
 import Footer from "../components/footer";
 import { NextSeo } from 'next-seo';
 
@@ -57,8 +56,8 @@ export default function Example() {
   return (
     <>
     <NextSeo
-      title="Black Home Design - Fale Conosco"
-      description="Entre em contato e faça seu projeto de design de interior conosco!"
+      title="Black Home Design - Empresa"
+      description="Conheça um pouco sobre a história da Black Home Design e toda a nossa experiência de mais de 15 anos de mercado!"
     />
     <div className="bg-white">
       {/* Mobile menu */}
@@ -180,133 +179,91 @@ export default function Example() {
         </header>
 
         <div className="relative max-w-3xl mx-auto py-20 px-6 flex flex-col items-center text-center sm:py-20 lg:px-0">
-          <h1 className="text-4xl font-extrabold tracking-tight text-white lg:text-6xl">Fale Conosco</h1>
-          <p className="mt-4 text-xl text-white">Dúvidas, sugestões, reclamações ou encomenda.</p>
+          <h1 className="text-4xl font-extrabold tracking-tight text-white lg:text-6xl">Nossa Empresa</h1>
+          <p className="mt-4 text-xl text-white">Confira um pouco sobre a nossa história.</p>
         </div>
       </div>
 
       <main>
         {/* Category section */}
 
-        <section aria-labelledby="category-heading" className="pt-24 xl:max-w-7xl xl:mx-auto">
-          <div className="relative bg-white">
-            <div className="absolute inset-0">
-              <div className="absolute inset-y-0 left-0 w-1/2 bg-gray-100" />
-            </div>
-            <div className="relative max-w-7xl mx-auto lg:grid lg:grid-cols-5">
-              <div className="bg-gray-100 py-16 px-4 sm:px-6 lg:col-span-2 lg:px-8 lg:py-24 xl:pr-12">
-                <div className="max-w-lg mx-auto">
-                  <h2 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">Get in touch</h2>
-                  <p className="mt-3 text-lg leading-6 text-gray-500">
-                    Enrre em contato utilizando o formulário ao lado para tirar dúvidas, fazer reclamação ou até mesmo fazer uma encomenda
-                    de algum móvel especial. Iremos ficar felizes em atender você!
-                  </p>
-                  <dl className="mt-8 text-base text-gray-500">
-                    <div>
-                      <dt className="sr-only">Endereço</dt>
-                      <dd>
-                        <p>Avenida Xing Ling, 1546 - Centro</p>
-                        <p>Curitiba - Paraná</p>
-                      </dd>
-                    </div>
-                    <div className="mt-6">
-                      <dt className="sr-only">Telefone</dt>
-                      <dd className="flex">
-                        <PhoneIcon className="flex-shrink-0 h-6 w-6 text-gray-400" aria-hidden="true" />
-                        <span className="ml-3">+1 (555) 123-4567</span>
-                      </dd>
-                    </div>
-                    <div className="mt-3">
-                      <dt className="sr-only">Email</dt>
-                      <dd className="flex">
-                        <MapIcon className="flex-shrink-0 h-6 w-6 text-gray-400" aria-hidden="true" />
-                        <span className="ml-3">contato@blackhomedesign.com</span>
-                      </dd>
-                    </div>
-                  </dl>
-                  <p className="mt-6 text-base text-gray-500">
-                    Quer trabalhar conosco?{" "}
-                    <a href="#" className="font-medium text-gray-700 underline">
-                      Entre em contato aqui
-                    </a>
-                    .
-                  </p>
-                </div>
-              </div>
-              <div className="bg-gray-50 py-16 px-4 sm:px-6 lg:col-span-3 lg:py-24 lg:px-8 xl:pl-12">
-                <div className="max-w-lg mx-auto lg:max-w-none">
-                  <form action="#" method="POST" className="grid grid-cols-1 gap-y-6">
-                    <div>
-                      <label htmlFor="full-name" className="sr-only">
-                        Nome Completo
-                      </label>
-                      <input
-                        type="text"
-                        name="full-name"
-                        id="full-name"
-                        autoComplete="name"
-                        className="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
-                        placeholder="Nome Completo"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="sr-only">
-                        Email
-                      </label>
-                      <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        autoComplete="email"
-                        className="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
-                        placeholder="Email"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="phone" className="sr-only">
-                        Telefone
-                      </label>
-                      <input
-                        type="text"
-                        name="phone"
-                        id="phone"
-                        autoComplete="tel"
-                        className="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
-                        placeholder="Telefone"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="message" className="sr-only">
-                        Mensagem
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        rows={4}
-                        className="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 rounded-md"
-                        placeholder="Mensagem"
-                        defaultValue={""}
-                      />
-                    </div>
-                    <div>
-                      <button
-                        type="submit"
-                        className="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                      >
-                        Enviar Mensagem
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
+        {/* Featured section */}
+        <section aria-labelledby="comfort-heading" className="max-w-7xl mx-auto py-6 px-4">
+        <div className="relative bg-white py-10">
+      <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
+        <div className="relative sm:py-16 lg:py-0">
+          <div aria-hidden="true" className="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen">
+            <div className="absolute inset-y-0 right-1/2 w-full bg-gray-50 rounded-r-3xl lg:right-72" />
+            <svg
+              className="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-auto lg:top-12"
+              width={404}
+              height={392}
+              fill="none"
+              viewBox="0 0 404 392"
+            >
+              <defs>
+                <pattern
+                  id="02f20b47-fd69-4224-a62a-4c9de5c763f7"
+                  x={0}
+                  y={0}
+                  width={20}
+                  height={20}
+                  patternUnits="userSpaceOnUse"
+                >
+                  <rect x={0} y={0} width={4} height={4} className="text-gray-200" fill="currentColor" />
+                </pattern>
+              </defs>
+              <rect width={404} height={392} fill="url(#02f20b47-fd69-4224-a62a-4c9de5c763f7)" />
+            </svg>
+          </div>
+          <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0 lg:max-w-none lg:py-20">
+            {/* Testimonial card*/}
+            <div className="relative pt-64 pb-64 rounded-2xl shadow-xl overflow-hidden">
+              <img
+                className="absolute inset-0 h-full w-full object-cover"
+                src="https://reformafacil.app/static/images/categories/marceneiro.jpg"
+                alt=""
+              />
+              <div className="absolute" />
             </div>
           </div>
+        </div>
+
+        <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0">
+          {/* Content area */}
+          <div className="pt-12 sm:pt-16 lg:pt-20">
+            <h2 className="text-3xl text-gray-900 font-extrabold tracking-tight sm:text-4xl">
+              Sobre Nós
+            </h2>
+            <div className="mt-6 text-gray-500 space-y-6">
+              <p className="text-lg">
+                Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum urna sed consectetur neque tristique
+                pellentesque. Blandit amet, sed aenean erat arcu morbi. Cursus faucibus nunc nisl netus morbi vel
+                porttitor vitae ut. Amet vitae fames senectus vitae.
+              </p>
+              <p className="text-base leading-7">
+                Sollicitudin tristique eros erat odio sed vitae, consequat turpis elementum. Lorem nibh vel, eget
+                pretium arcu vitae. Eros eu viverra donec ut volutpat donec laoreet quam urna. Sollicitudin tristique
+                eros erat odio sed vitae, consequat turpis elementum. Lorem nibh vel, eget pretium arcu vitae. Eros eu
+                viverra donec ut volutpat donec laoreet quam urna.
+              </p>
+              <p className="text-base leading-7">
+                Rhoncus nisl, libero egestas diam fermentum dui. At quis tincidunt vel ultricies. Vulputate aliquet
+                velit faucibus semper. Pellentesque in venenatis vestibulum consectetur nibh id. In id ut tempus
+                egestas. Enim sit aliquam nec, a. Morbi enim fermentum lacus in. Viverra.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
         </section>
 
         {/* Collection section */}
 
         <section aria-labelledby="collection-heading" className="max-w-xl mx-auto pt-12 px-4 sm:pt-12 sm:px-6 lg:max-w-7xl lg:px-8">
-        <h2 id="collection-heading" className="text-3xl font-extrabold tracking-tight text-gray-900 flex justify-center">
+          <h2 id="collection-heading" className="text-3xl font-extrabold tracking-tight text-gray-900 flex justify-center">
             Produtos em Estoque
           </h2>
           <p className="mt-4 text-base text-gray-500 text-center">
@@ -369,5 +326,5 @@ export default function Example() {
       </footer>
     </div>
     </>
-  );  
+  );
 }

@@ -7,9 +7,11 @@ import Footer from "../components/footer";
 
 const navigation = {
   pages: [
-    { name: "Nossa Empresa", href: "#" },
-    { name: "Nossos Produtos", href: "#" },
-    { name: "Fale Conosco", href: "#" },
+    { name: "Home", href: "/" },
+    { name: "Empresa", href: "/empresa" },
+    { name: "Pronta Entrega", href: "/produtos" },
+    { name: "Consultoria", href: "/" },
+    { name: "Contato", href: "/contato" },
   ],
 };
 
@@ -160,27 +162,28 @@ export default function Example() {
             <div className="backdrop-blur-md backdrop-filter bg-opacity-10 bg-white">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div>
-                  <div className="h-16 flex items-center justify-between">
+                  <div className="h-20 lg:h-40 flex items-center justify-between">
                     {/* Logo (lg+) */}
-                    <div className="hidden lg:flex-1 lg:flex lg:items-center">
+                    <div className="hidden lg:flex-1 lg:flex lg:items-center lg:justify-center lg:my-10">
                       <a href="#">
                         <span className="sr-only">Black Home Design</span>
-                        <img src="/logo.svg" alt="" className="h-8 w-auto" />
-                      </a>
-                    </div>
-
-                    <div className="hidden h-full lg:flex">
+                        <div className="lg:flex-1 lg:flex lg:justify-center"><img className="h-24 w-auto" src="/logo.svg" alt="" /></div>
+                        <div className="hidden h-full lg:flex">
                       {/* Flyout menus */}
                       <Popover.Group className="px-4 bottom-0 inset-x-0">
                         <div className="h-full flex justify-center space-x-8">
                           {navigation.pages.map((page) => (
-                            <a key={page.name} href={page.href} className="flex items-center text-sm font-medium text-white">
+                            <a key={page.name} href={page.href} className="flex items-center text-lg font-medium text-white">
                               {page.name}
                             </a>
                           ))}
                         </div>
                       </Popover.Group>
                     </div>
+                      </a>
+                    </div>
+
+                    
 
                     {/* Mobile menu and search (lg-) */}
                     <div className="flex-1 flex items-center lg:hidden">
@@ -192,17 +195,9 @@ export default function Example() {
 
                     {/* Logo (lg-) */}
                     <a href="#" className="lg:hidden">
-                      <span className="sr-only">Workflow</span>
-                      <img src="https://tailwindui.com/img/logos/workflow-mark.svg?color=white" alt="" className="h-8 w-auto" />
+                      <span className="sr-only">Black Home Design</span>
+                      <img src="/logo.svg" alt="" className="h-8 w-auto" />
                     </a>
-
-                    <div className="flex-1 flex items-center justify-end">
-                      <a href="#" className="hidden text-sm font-medium text-white lg:block">
-                        Rua Padre Agostinho, 154 - Centro
-                      </a>
-
-                      <div className="flex items-center lg:ml-8"></div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -238,21 +233,30 @@ export default function Example() {
               </select>
             </div>
             <div>
-              <label htmlFor="search" className="block text-sm font-medium text-gray-700">
-                Busca Rápida
+              <label htmlFor="location" className="block text-sm font-medium text-gray-700">
+                SubCategorias
               </label>
-              <div className="mt-1 relative flex items-center">
-                <input
-                  type="text"
-                  name="search"
-                  id="search"
-                  className="shadow-sm focus:ring-gray-800 focus:border-gray-800 block w-full pr-12 sm:text-sm border-gray-300 rounded-md"
-                />
-                <div className="absolute inset-y-0 right-0 flex py-1.5 pr-1.5">
-                  <kbd className="inline-flex items-center border border-gray-200 rounded px-2 text-sm font-sans font-medium text-gray-400">
-                    Ctrl+K
-                  </kbd>
-                </div>
+              <select
+                id="location"
+                name="location"
+                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-gray-800 focus:border-gray-800 sm:text-sm rounded-md"
+                defaultValue="Todos"
+              >
+                <option>Todos</option>
+                <option>Mesas</option>
+                <option>Sofás</option>
+                <option>Cadeiras</option>
+                <option>Poltronas</option>
+              </select>
+            </div>
+            <div>
+              <div className="mt-1 relative flex items-center my-auto">
+              <button
+                type="button"
+                className="mt-5 inline-flex items-center px-3 py-1 border border-transparent text-lg font-medium rounded-lg shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
+                Buscar Produtos
+              </button>
               </div>
             </div>
           </div>

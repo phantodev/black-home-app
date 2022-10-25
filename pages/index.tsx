@@ -3,22 +3,15 @@ import Link from "next/link";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import Footer from "./components/footer";
-
-/* This example requires Tailwind CSS v2.0+ */
-const stats = [
-  { label: 'Founded', value: '2021' },
-  { label: 'Employees', value: '5' },
-  { label: 'Beta Users', value: '521' },
-  { label: 'Raised', value: '$25M' },
-]
-
+import { NextSeo } from 'next-seo';
 
 const navigation = {
   pages: [
-    { name: "Home", href: "#" },
-    { name: "Pronta Entrega", href: "#" },
-    { name: "Consultoria", href: "#" },
-    { name: "Contato", href: "#" },
+    { name: "Home", href: "/" },
+    { name: "Empresa", href: "/empresa" },
+    { name: "Pronta Entrega", href: "/produtos" },
+    { name: "Consultoria", href: "/" },
+    { name: "Contato", href: "/contato" },
   ],
 };
 const categories = [
@@ -69,6 +62,46 @@ const collections = [
     description: "Be more productive than enterprise project managers with a single piece of paper.",
     price: "R$ 100",
   },
+  {
+    name: "Handcrafted Collection",
+    href: "#",
+    imageSrc: "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-01.jpg",
+    imageAlt: "Brown leather key ring with brass metal loops and rivets on wood table.",
+    description: "Keep your phone, keys, and wallet together, so you can lose everything at once.",
+    price: "R$ 100",
+  },
+  {
+    name: "Organized Desk Collection",
+    href: "#",
+    imageSrc: "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-02.jpg",
+    imageAlt: "Natural leather mouse pad on white desk next to porcelain mug and keyboard.",
+    description: "The rest of the house will still be a mess, but your desk will look great.",
+    price: "R$ 100",
+  },
+  {
+    name: "Focus Collection",
+    href: "#",
+    imageSrc: "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-03.jpg",
+    imageAlt: "Person placing task list card into walnut card holder next to felt carrying case on leather desk pad.",
+    description: "Be more productive than enterprise project managers with a single piece of paper.",
+    price: "R$ 100",
+  },
+  {
+    name: "Handcrafted Collection",
+    href: "#",
+    imageSrc: "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-01.jpg",
+    imageAlt: "Brown leather key ring with brass metal loops and rivets on wood table.",
+    description: "Keep your phone, keys, and wallet together, so you can lose everything at once.",
+    price: "R$ 100",
+  },
+  {
+    name: "Organized Desk Collection",
+    href: "#",
+    imageSrc: "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-02.jpg",
+    imageAlt: "Natural leather mouse pad on white desk next to porcelain mug and keyboard.",
+    description: "The rest of the house will still be a mess, but your desk will look great.",
+    price: "R$ 100",
+  }
 ];
 
 function classNames(...classes: any) {
@@ -79,6 +112,11 @@ export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
+    <>
+    <NextSeo
+      title="Black Home Design - Home"
+      description="Seja bem-vindo ao site da melhor empresa de Design de Interiores de Curitiba e projetos customizado para decoração de sua casa!"
+    />
     <div className="bg-white">
       {/* Mobile menu */}
       <Transition.Root show={mobileMenuOpen} as={Fragment}>
@@ -195,11 +233,7 @@ export default function Example() {
         </header>
 
         <div className="relative max-w-3xl mx-auto py-32 px-6 flex flex-col items-center text-center sm:py-64 lg:px-0">
-          <h1 className="text-4xl font-extrabold tracking-tight text-white lg:text-6xl">Mobiliário com Estilo</h1>
-          <p className="mt-4 text-xl text-white">
-            Estamos há mais de 20 anos no mercado, e hoje contamos com 2 mil metros quadrados de loja, repletos de móveis, decorações,
-            tapetes, quadros e complementos selecionados através da nossa curadoria exclusiva.
-          </p>
+
         </div>
       </div>
 
@@ -242,7 +276,7 @@ export default function Example() {
           </h2>
           <p className="mt-4 text-base text-gray-500 text-center">Acesse com exclusividade nossos últimos lançamentos de nossos produtos. Aproveite!</p>
 
-          <div className="mt-10 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-8">
+          <div className="mt-10 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-x-8">
             {collections.map((collection) => (
               <div key={collection.name} className="group block">
                 <div
@@ -255,7 +289,7 @@ export default function Example() {
                 <p className="mt-2 text-sm text-gray-500">{collection.description}</p>
                 <p className="mt-2 text-2xl font-bold text-gray-500">{collection.price}</p>
                 <Link href={collection.href}>
-                  <a className="mt-8 w-full block bg-gray-800 border border-transparent rounded-md py-3 px-8 text-base font-medium text-white hover:bg-gray-500 sm:w-auto">
+                  <a className="my-8 w-full block bg-gray-800 border border-transparent rounded-md py-3 px-8 text-base font-medium text-white hover:bg-gray-500 sm:w-auto">
                     Detalhes do Produto
                   </a>
                 </Link>
@@ -265,12 +299,12 @@ export default function Example() {
         </section>
 
                 {/* Featured section */}
-                <section aria-labelledby="social-impact-heading" className="max-w-7xl mx-auto pt-12 px-4 sm:pt-12 sm:px-6 lg:px-8">
+        <section aria-labelledby="social-impact-heading" className="max-w-7xl mx-auto pt-12 px-4 sm:pt-12 sm:px-6 lg:px-8 lg:grid lg:grid-cols-2 lg:gap-x-6">
           <div className="relative rounded-lg overflow-hidden">
             <div className="absolute inset-0">
               <img src="/sala.jpg" alt="" className="w-full h-full object-center object-cover" />
             </div>
-            <div className="relative bg-gray-900 bg-opacity-25 py-32 px-6 sm:py-40 sm:px-12 lg:px-16">
+            <div className="relative bg-gray-900 bg-opacity-50 py-32 px-6 sm:py-40 sm:px-12 lg:px-16">
               <div className="relative max-w-3xl mx-auto flex flex-col items-center text-center">
                 <h2 id="social-impact-heading" className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
                   <span className="block sm:inline">Galeria em 3d</span>
@@ -283,6 +317,27 @@ export default function Example() {
                   className="mt-8 w-full block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto"
                 >
                   Ver Galeria
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="relative rounded-lg overflow-hidden">
+            <div className="absolute inset-0">
+              <img src="/consultoria.jpeg" alt="" className="w-full h-full object-center object-cover" />
+            </div>
+            <div className="relative bg-gray-900 bg-opacity-50 py-32 px-6 sm:py-40 sm:px-12 lg:px-16">
+              <div className="relative max-w-3xl mx-auto flex flex-col items-center text-center">
+                <h2 id="social-impact-heading" className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+                  <span className="block sm:inline">Faça uma consultoria!</span>
+                </h2>
+                <p className="mt-3 text-xl text-white">
+                Precisa de um projeto especial ou algum móvel sobre encomenda? Entre em contato conosco!
+                </p>
+                <a
+                  href="#"
+                  className="mt-8 w-full block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto"
+                >
+                  Entre em contato
                 </a>
               </div>
             </div>
@@ -361,31 +416,6 @@ export default function Example() {
       </div>
     </div>
         </section>
-
-        {/* Featured section */}
-        <section aria-labelledby="comfort-heading" className="max-w-7xl mx-auto py-12 px-4 sm:py-12 sm:px-6 lg:px-8">
-          <div className="relative rounded-lg overflow-hidden">
-            <div className="absolute inset-0">
-              <img src="/sala-2.jpg" alt="" className="w-full h-full object-center object-cover" />
-            </div>
-            <div className="relative bg-gray-900 bg-opacity-25 py-32 px-6 sm:py-40 sm:px-12 lg:px-16">
-              <div className="relative max-w-3xl mx-auto flex flex-col items-center text-center">
-                <h2 id="comfort-heading" className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-                  Faça uma consultoria!
-                </h2>
-                <p className="mt-3 text-xl text-white">
-                  Precisa de um projeto especial ou algum móvel sobre encomenda? Entre em contato conosco e faça uma consultoria para seu projeto de design de interiores personalizado ou aquele móvel diferenciado que você sempre sonhou em ter em sua casa.
-                </p>
-                <a
-                  href="#"
-                  className="mt-8 w-full block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto"
-                >
-                  Quero encomendar
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
 
       <footer aria-labelledby="footer-heading" className="bg-gray-900">
@@ -395,5 +425,6 @@ export default function Example() {
         <Footer />
       </footer>
     </div>
+    </>
   );
 }
