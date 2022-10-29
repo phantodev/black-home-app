@@ -5,6 +5,7 @@ import Image from "next/image";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import { useRouter } from "next/router";
 
 interface SliderBanner {
   categoryDetails: [
@@ -17,6 +18,15 @@ interface SliderBanner {
 }
 
 export function SliderCategory({ categoryDetails }: SliderBanner) {
+  const router = useRouter();
+
+  function FromCategoryPage(nome: string) {
+    router.push({
+      pathname: "/produtos",
+      query: { category: nome },
+    });
+  }
+
   return (
     <Swiper
       slidesPerView={3}
@@ -30,9 +40,11 @@ export function SliderCategory({ categoryDetails }: SliderBanner) {
       {categoryDetails.map((category, idx) => {
         return (
           <SwiperSlide key={category.idCategoria + idx}>
-            <a
+            <div
               key={category.nome}
-              href={"#"}
+              onClick={() => {
+                FromCategoryPage(category.nome);
+              }}
               className="relative w-56 h-80 rounded-lg p-6 flex flex-col overflow-hidden hover:opacity-75"
             >
               <span aria-hidden="true" className="absolute inset-0">
@@ -49,7 +61,7 @@ export function SliderCategory({ categoryDetails }: SliderBanner) {
               <span className="relative mt-auto text-center text-xl font-bold text-white">
                 {category.nome}
               </span>
-            </a>
+            </div>
           </SwiperSlide>
         );
       })}

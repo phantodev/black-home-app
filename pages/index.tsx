@@ -11,6 +11,7 @@ import { AboutHelper } from "../server/helpers/about";
 
 import { SliderBanner } from "../components/Slider/banner";
 import { SliderCategory } from "../components/Slider/category";
+import { useRouter } from "next/router";
 
 const navigation = {
   pages: [
@@ -140,6 +141,8 @@ function classNames(...classes: any) {
 }
 
 export default function Example(props: any) {
+  const router = useRouter();
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [bannerDetails, setBannerDetails] = useState([{}] as [
     {
@@ -183,6 +186,11 @@ export default function Example(props: any) {
     setText(JSON.parse(props.text));
   }, [props]);
 
+  function FromProductPage(id: string) {
+    router.push({
+      pathname: "/produtos/" + id,
+    });
+  }
 
   return (
     <>
@@ -377,6 +385,9 @@ export default function Example(props: any) {
                     <div
                       aria-hidden="true"
                       className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden group-hover:opacity-75 lg:aspect-w-5 lg:aspect-h-6"
+                      onClick={() => {
+                        FromProductPage(collection.idProduto);
+                      }}
                     >
                       <img
                         src={`${collection.foto && collection.foto[0].urli}`}
