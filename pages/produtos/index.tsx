@@ -127,8 +127,8 @@ export default function Example() {
     if (router.query.category) {
       const Query = router.query.category;
       setCategory(Query);
-      getProducts();
     }
+    getProducts();
   }, [router]);
 
   async function getProducts() {
@@ -141,7 +141,11 @@ export default function Example() {
     }
   }
 
-  console.log(products);
+  function FromProductPage(id: string) {
+    router.push({
+      pathname: "/produtos/" + id,
+    });
+  }
 
   return (
     <div className="bg-white">
@@ -357,6 +361,9 @@ export default function Example() {
                 <div
                   aria-hidden="true"
                   className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden group-hover:opacity-75 lg:aspect-w-5 lg:aspect-h-6"
+                  onClick={() => {
+                    FromProductPage(collection.idProduto);
+                  }}
                 >
                   <img
                     src={`${collection.foto && collection.foto[0].urli}`}
