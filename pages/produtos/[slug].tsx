@@ -60,7 +60,7 @@ export default function Example(props: any) {
           description: product.detalhe,
           images: [
             {
-              url: `${product.foto[0].urli}`,
+              url: `${product.foto && product.foto[0].urli}`,
               width: 800,
               height: 600,
               alt: `Imagem do produto ${product.nome}`,
