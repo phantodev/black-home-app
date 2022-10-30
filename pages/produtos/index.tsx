@@ -6,6 +6,11 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 import Footer from "../components/footer";
 import { useRouter } from "next/router";
 import { ProductHelper } from "../../server/helpers/product";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+type Inputs = {
+  category: string;
+};
 
 const navigation = {
   pages: [
@@ -108,7 +113,7 @@ const collections = [
   },
 ];
 
-export default function Example() {
+export default function Example(props: any) {
   const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [category, setCategory] = useState("" as string | string[] | undefined);
@@ -117,6 +122,11 @@ export default function Example() {
       idProduto: string;
       foto: [{ urli: string }];
       nome: string;
+      subCategoria: Array<{
+        categoria: string;
+        idCategoriaSub: string;
+        nomeSub: string;
+      }>;
       detalhe: string;
       valor: string;
       href: string;
@@ -127,19 +137,24 @@ export default function Example() {
     if (router.query.category) {
       const Query = router.query.category;
       setCategory(Query);
+      setValue("category", String(Query));
     }
-    getProducts();
   }, [router]);
 
-  async function getProducts() {
-    try {
-      const data = await ProductHelper.getProductAll(); 
+  useEffect(() => {
+    setProducts(JSON.parse(props.products));
+  }, [props]);
 
-      setProducts(data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<Inputs>();
+
+  const onSubmit: SubmitHandler<Inputs> = async (data) => console.log(data);
 
   function FromProductPage(id: string) {
     router.push({
@@ -298,7 +313,10 @@ export default function Example() {
       <main>
         {/* Collection section */}
         <section className="max-w-xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-          <div className="mt-10 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-x-8">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="mt-10 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-x-8"
+          >
             <div>
               <label
                 htmlFor="location"
@@ -308,15 +326,19 @@ export default function Example() {
               </label>
               <select
                 id="location"
-                name="location"
                 className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-gray-800 focus:border-gray-800 sm:text-sm rounded-md"
-                defaultValue={category}
+                {...register("category")}
               >
                 <option value={"Todos"}>Todos</option>
                 <option value={"Mesas"}>Mesas</option>
                 <option value={"Sofás"}>Sofás</option>
                 <option value={"Cadeiras"}>Cadeiras</option>
                 <option value={"Poltronas"}>Poltronas</option>
+                {router.query.category && (
+                  <option value={router.query.category}>
+                    {router.query.category}
+                  </option>
+                )}
               </select>
             </div>
             <div>
@@ -342,51 +364,52 @@ export default function Example() {
             <div>
               <div className="mt-1 relative flex items-center my-auto">
                 <button
-                  type="button"
+                  type={"submit"}
                   className="mt-5 inline-flex items-center px-3 py-1 border border-transparent text-lg font-medium rounded-lg shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   Buscar Produtos
                 </button>
               </div>
             </div>
-          </div>
+          </form>
         </section>
         <section
           aria-labelledby="collection-heading"
           className="max-w-xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8"
         >
           <div className="mt-10 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-x-8">
-            {products.map((collection) => (
-              <div key={collection.nome} className="group block mb-20">
-                <div
-                  aria-hidden="true"
-                  className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden group-hover:opacity-75 lg:aspect-w-5 lg:aspect-h-6"
-                  onClick={() => {
-                    FromProductPage(collection.idProduto);
-                  }}
-                >
-                  <img
-                    src={`${collection.foto && collection.foto[0].urli}`}
-                    alt={collection.nome}
-                    className="w-full h-full object-center object-cover"
-                  />
+            {products[0].idProduto &&
+              products.map((collection) => (
+                <div key={collection.nome} className="group block mb-20">
+                  <div
+                    aria-hidden="true"
+                    className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden group-hover:opacity-75 lg:aspect-w-5 lg:aspect-h-6"
+                    onClick={() => {
+                      FromProductPage(collection.idProduto);
+                    }}
+                  >
+                    <img
+                      src={`${collection.foto && collection.foto[0].urli}`}
+                      alt={collection.nome}
+                      className="w-full h-full object-center object-cover"
+                    />
+                  </div>
+                  <h3 className="mt-4 text-base font-semibold text-gray-900">
+                    {collection.nome}
+                  </h3>
+                  <p className="mt-2 text-sm text-gray-500">
+                    {collection.detalhe}
+                  </p>
+                  <p className="mt-2 text-2xl font-bold text-gray-500">
+                    R$:{collection.valor},00
+                  </p>
+                  <Link href={"#"}>
+                    <a className="mt-8 w-full block bg-gray-800 border border-transparent rounded-md py-3 px-8 text-base font-medium text-white hover:bg-gray-500 sm:w-auto">
+                      Detalhes do Produto
+                    </a>
+                  </Link>
                 </div>
-                <h3 className="mt-4 text-base font-semibold text-gray-900">
-                  {collection.nome}
-                </h3>
-                <p className="mt-2 text-sm text-gray-500">
-                  {collection.detalhe}
-                </p>
-                <p className="mt-2 text-2xl font-bold text-gray-500">
-                  R$:{collection.valor},00
-                </p>
-                <Link href={"#"}>
-                  <a className="mt-8 w-full block bg-gray-800 border border-transparent rounded-md py-3 px-8 text-base font-medium text-white hover:bg-gray-500 sm:w-auto">
-                    Detalhes do Produto
-                  </a>
-                </Link>
-              </div>
-            ))}
+              ))}
           </div>
           <nav className="border-t border-gray-200 px-4 mt-20 flex items-center justify-between sm:px-0">
             <div className="-mt-px w-0 flex-1 flex">
@@ -505,4 +528,16 @@ export default function Example() {
       </footer>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  const producs = await ProductHelper.getProductAll();
+
+  const Producs = JSON.stringify(producs);
+
+  return {
+    props: {
+      products: Producs,
+    },
+  };
 }

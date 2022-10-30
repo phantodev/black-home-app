@@ -8,7 +8,6 @@ import { NextSeo } from "next-seo";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ContactHelper } from "../../server/helpers/contact";
 import { ToastContainer, toast } from "react-toastify";
-import { info } from "console";
 import { ProductHelper } from "../../server/helpers/product";
 
 type Inputs = {
@@ -452,7 +451,7 @@ export default function Example(props: any) {
                   <p className="mt-2 text-2xl font-bold text-gray-500">
                     R$: {collection.valor},00
                   </p>
-                  <Link href={'#'}>
+                  <Link href={"#"}>
                     <a className="mt-8 w-full block bg-gray-800 border border-transparent rounded-md py-3 px-8 text-base font-medium text-white hover:bg-gray-500 sm:w-auto">
                       Detalhes do Produto
                     </a>
