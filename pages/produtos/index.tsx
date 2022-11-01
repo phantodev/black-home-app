@@ -111,10 +111,7 @@ export default function Example(props: any) {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) =>
-    router.push({
-      pathname: "/produtos/",
-      query: { page: 1, category: data.category },
-    });
+    fiterProduct(data.category);
 
   function FromProductPage(id: string) {
     router.push({
