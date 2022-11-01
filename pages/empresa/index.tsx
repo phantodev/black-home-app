@@ -25,6 +25,7 @@ export default function Example(props: any) {
       texto: string;
       idTipoTexto: string;
       nomeTipoTexto: string;
+      imagem: string;
     }
   ]);
   const [productMain, setProductMain] = useState([{}] as [
