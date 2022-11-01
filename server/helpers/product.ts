@@ -9,13 +9,17 @@ export class ProductHelper {
       console.log(error);
     }
   }
-  static async getProductAll() {
+  static async getProductAll(values: any) {
+    const { idCategoria, idSubCategoria, page } = values;
+
     try {
-      const { data } = await api.get("/getAllProduto");
+      const { data } = await api.post("/getAllProduto", {
+        idCategoria: idCategoria || "",
+        idSubCategoria: idSubCategoria || "",
+        pagina: page || "",
+      });
       return data;
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }
   static async getProductDetails(id: string) {
     try {

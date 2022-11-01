@@ -22,119 +22,6 @@ const navigation = {
     { name: "Contato", href: "/contato" },
   ],
 };
-const categories = [
-  {
-    name: "Poltronas",
-    href: "#",
-    imageSrc: "/poltronas.jpg",
-  },
-  {
-    name: "Cadeiras",
-    href: "#",
-    imageSrc: "/cadeiras.jpg",
-  },
-  {
-    name: "Mesa de Jantar",
-    href: "#",
-    imageSrc: "/mesa.jpg",
-  },
-  {
-    name: "Aparadores",
-    href: "#",
-    imageSrc: "/aparador.jpg",
-  },
-  { name: "Sofás", href: "#", imageSrc: "/sofa-2.jpg" },
-];
-const collections = [
-  {
-    name: "Handcrafted Collection",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-01.jpg",
-    imageAlt:
-      "Brown leather key ring with brass metal loops and rivets on wood table.",
-    description:
-      "Keep your phone, keys, and wallet together, so you can lose everything at once.",
-    price: "R$ 100",
-  },
-  {
-    name: "Organized Desk Collection",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-02.jpg",
-    imageAlt:
-      "Natural leather mouse pad on white desk next to porcelain mug and keyboard.",
-    description:
-      "The rest of the house will still be a mess, but your desk will look great.",
-    price: "R$ 100",
-  },
-  {
-    name: "Focus Collection",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-03.jpg",
-    imageAlt:
-      "Person placing task list card into walnut card holder next to felt carrying case on leather desk pad.",
-    description:
-      "Be more productive than enterprise project managers with a single piece of paper.",
-    price: "R$ 100",
-  },
-  {
-    name: "Handcrafted Collection",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-01.jpg",
-    imageAlt:
-      "Brown leather key ring with brass metal loops and rivets on wood table.",
-    description:
-      "Keep your phone, keys, and wallet together, so you can lose everything at once.",
-    price: "R$ 100",
-  },
-  {
-    name: "Organized Desk Collection",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-02.jpg",
-    imageAlt:
-      "Natural leather mouse pad on white desk next to porcelain mug and keyboard.",
-    description:
-      "The rest of the house will still be a mess, but your desk will look great.",
-    price: "R$ 100",
-  },
-  {
-    name: "Focus Collection",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-03.jpg",
-    imageAlt:
-      "Person placing task list card into walnut card holder next to felt carrying case on leather desk pad.",
-    description:
-      "Be more productive than enterprise project managers with a single piece of paper.",
-    price: "R$ 100",
-  },
-  {
-    name: "Handcrafted Collection",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-01.jpg",
-    imageAlt:
-      "Brown leather key ring with brass metal loops and rivets on wood table.",
-    description:
-      "Keep your phone, keys, and wallet together, so you can lose everything at once.",
-    price: "R$ 100",
-  },
-  {
-    name: "Organized Desk Collection",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-02.jpg",
-    imageAlt:
-      "Natural leather mouse pad on white desk next to porcelain mug and keyboard.",
-    description:
-      "The rest of the house will still be a mess, but your desk will look great.",
-    price: "R$ 100",
-  },
-];
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
@@ -173,9 +60,11 @@ export default function Example(props: any) {
   const [text, setText] = useState([{}] as [
     {
       idTexto: string;
-      texto: string;
       idTipoTexto: string;
       nomeTipoTexto: string;
+      texto: string;
+      titulo: string;
+      imagem: string;
     }
   ]);
 
@@ -191,7 +80,6 @@ export default function Example(props: any) {
       pathname: "/produtos/" + id,
     });
   }
-
   return (
     <>
       <NextSeo
@@ -487,8 +375,72 @@ export default function Example(props: any) {
             className="max-w-7xl mx-auto py-6 px-4"
           >
             <div className="relative bg-white py-10">
-              <h1 className="text-2xl">Sobre Nós</h1>
-              <div dangerouslySetInnerHTML={{ __html: text[0].texto }}></div>
+              <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
+                <div className="relative sm:py-16 lg:py-0">
+                  <div
+                    aria-hidden="true"
+                    className="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen"
+                  >
+                    <div className="absolute inset-y-0 right-1/2 w-full bg-gray-50 rounded-r-3xl lg:right-72" />
+                    <svg
+                      className="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-auto lg:top-12"
+                      width={404}
+                      height={392}
+                      fill="none"
+                      viewBox="0 0 404 392"
+                    >
+                      <defs>
+                        <pattern
+                          id="02f20b47-fd69-4224-a62a-4c9de5c763f7"
+                          x={0}
+                          y={0}
+                          width={20}
+                          height={20}
+                          patternUnits="userSpaceOnUse"
+                        >
+                          <rect
+                            x={0}
+                            y={0}
+                            width={4}
+                            height={4}
+                            className="text-gray-200"
+                            fill="currentColor"
+                          />
+                        </pattern>
+                      </defs>
+                      <rect
+                        width={404}
+                        height={392}
+                        fill="url(#02f20b47-fd69-4224-a62a-4c9de5c763f7)"
+                      />
+                    </svg>
+                  </div>
+                  <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0 lg:max-w-none lg:py-20">
+                    {/* Testimonial card*/}
+                    <div className="relative pt-64 pb-64 rounded-2xl shadow-xl overflow-hidden">
+                      <img
+                        className="absolute inset-0 h-full w-full object-cover"
+                        src={text[0].imagem}
+                        alt=""
+                      />
+                      <div className="absolute" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0">
+                  {/* Content area */}
+                  <div className="pt-12 sm:pt-16 lg:pt-20">
+                    <h2 className="text-3xl text-gray-900 font-extrabold tracking-tight sm:text-4xl">
+                      Sobre Nós
+                    </h2>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: text[0].texto }}
+                      className="mt-6 text-gray-500 space-y-6"
+                    ></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
         </main>

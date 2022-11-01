@@ -7,6 +7,7 @@ import Footer from "../components/footer";
 import { useRouter } from "next/router";
 import { ProductHelper } from "../../server/helpers/product";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { CategoryHelper } from "../../server/helpers/category";
 
 type Inputs = {
   category: string;
@@ -22,130 +23,85 @@ const navigation = {
   ],
 };
 
-const collections = [
-  {
-    name: "Handcrafted Collection",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-01.jpg",
-    imageAlt:
-      "Brown leather key ring with brass metal loops and rivets on wood table.",
-    description:
-      "Keep your phone, keys, and wallet together, so you can lose everything at once.",
-    price: "R$100,00",
-  },
-  {
-    name: "Organized Desk Collection",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-02.jpg",
-    imageAlt:
-      "Natural leather mouse pad on white desk next to porcelain mug and keyboard.",
-    description:
-      "The rest of the house will still be a mess, but your desk will look great.",
-    price: "R$120,00",
-  },
-  {
-    name: "Focus Collection",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-03.jpg",
-    imageAlt:
-      "Person placing task list card into walnut card holder next to felt carrying case on leather desk pad.",
-    description:
-      "Be more productive than enterprise project managers with a single piece of paper.",
-    price: "R$100,00",
-  },
-  {
-    name: "Handcrafted Collection",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-01.jpg",
-    imageAlt:
-      "Brown leather key ring with brass metal loops and rivets on wood table.",
-    description:
-      "Keep your phone, keys, and wallet together, so you can lose everything at once.",
-    price: "R$100,00",
-  },
-  {
-    name: "Organized Desk Collection",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-02.jpg",
-    imageAlt:
-      "Natural leather mouse pad on white desk next to porcelain mug and keyboard.",
-    description:
-      "The rest of the house will still be a mess, but your desk will look great.",
-    price: "R$120,00",
-  },
-  {
-    name: "Focus Collection",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-03.jpg",
-    imageAlt:
-      "Person placing task list card into walnut card holder next to felt carrying case on leather desk pad.",
-    description:
-      "Be more productive than enterprise project managers with a single piece of paper.",
-    price: "R$100,00",
-  },
-  {
-    name: "Organized Desk Collection",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-02.jpg",
-    imageAlt:
-      "Natural leather mouse pad on white desk next to porcelain mug and keyboard.",
-    description:
-      "The rest of the house will still be a mess, but your desk will look great.",
-    price: "R$120,00",
-  },
-  {
-    name: "Focus Collection",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/home-page-01-collection-03.jpg",
-    imageAlt:
-      "Person placing task list card into walnut card holder next to felt carrying case on leather desk pad.",
-    description:
-      "Be more productive than enterprise project managers with a single piece of paper.",
-    price: "R$100,00",
-  },
-];
+interface product {
+  idProduto: string;
+  nome: string;
+  slug: string;
+  detalhe: string;
+  cor: string;
+  medida: string;
+  valor: string;
+  estoque: string;
+  destaque: string;
+  subCategoria: Array<{
+    idCategoriaSub: string;
+    nomeSub: string;
+    categoria: string;
+  }>;
+  foto: Array<{
+    urli: string;
+    principal: string;
+  }>;
+}
 
 export default function Example(props: any) {
   const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [category, setCategory] = useState("" as string | string[] | undefined);
-  const [products, setProducts] = useState([{}] as [
+  const [dataProducts, setDataProducts] = useState([{}] as [
     {
-      idProduto: string;
-      foto: [{ urli: string }];
-      nome: string;
-      subCategoria: Array<{
-        categoria: string;
-        idCategoriaSub: string;
-        nomeSub: string;
-      }>;
-      detalhe: string;
-      valor: string;
-      href: string;
+      produto: Array<product>;
+      totalRegistros: number;
+      paginaAtual: number;
     }
   ]);
+  const [categoryList, setCategoryList] = useState([{}] as [
+    {
+      idCategoria: string;
+      imagem: string;
+      nome: string;
+    }
+  ]);
+
+  const [totalPage, setTotalPage] = useState([] as Array<number>);
+
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     if (router.query.category) {
       const Query = router.query.category;
       setCategory(Query);
       setValue("category", String(Query));
+      fiterProduct(Query);
+    }
+  }, [router, categoryList]);
+
+  useEffect(() => {
+    if (router.query.page) {
+      const Page = Number(router.query.page);
+      setPage(Page);
     }
   }, [router]);
 
   useEffect(() => {
-    setProducts(JSON.parse(props.products));
+    const Products = JSON.parse(props.products);
+    const TotalPage = [];
+    setDataProducts(JSON.parse(props.products));
+    setCategoryList(JSON.parse(props.category));
+    for (let i = 0; i < Products[0].paginaTotal; i++) {
+      TotalPage.push(i);
+    }
+    setTotalPage(TotalPage);
   }, [props]);
 
-
+  async function fiterProduct(id: any) {
+    try {
+      const products = await ProductHelper.getProductAll({ idCategoria: id });
+      setDataProducts(products);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const {
     register,
@@ -154,7 +110,11 @@ export default function Example(props: any) {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = async (data) =>
+    router.push({
+      pathname: "/produtos/",
+      query: { page: 1, category: data.category },
+    });
 
   function FromProductPage(id: string) {
     router.push({
@@ -329,16 +289,17 @@ export default function Example(props: any) {
                 className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-gray-800 focus:border-gray-800 sm:text-sm rounded-md"
                 {...register("category")}
               >
-                <option value={"Todos"}>Todos</option>
-                <option value={"Mesas"}>Mesas</option>
-                <option value={"Sofás"}>Sofás</option>
-                <option value={"Cadeiras"}>Cadeiras</option>
-                <option value={"Poltronas"}>Poltronas</option>
-                {router.query.category && (
-                  <option value={router.query.category}>
-                    {router.query.category}
-                  </option>
-                )}
+                <option value={""}>Todos</option>
+                {categoryList.map((category, idx) => {
+                  return (
+                    <option
+                      key={category.idCategoria + idx}
+                      value={category.idCategoria}
+                    >
+                      {category.nome}
+                    </option>
+                  );
+                })}
               </select>
             </div>
             <div>
@@ -378,8 +339,8 @@ export default function Example(props: any) {
           className="max-w-xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8"
         >
           <div className="mt-10 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-x-8">
-            {products[0].idProduto &&
-              products.map((collection) => (
+            {dataProducts[0].produto &&
+              dataProducts[0].produto.map((collection) => (
                 <div key={collection.nome} className="group block mb-20">
                   <div
                     aria-hidden="true"
@@ -411,73 +372,55 @@ export default function Example(props: any) {
                 </div>
               ))}
           </div>
+          {}
           <nav className="border-t border-gray-200 px-4 mt-20 flex items-center justify-between sm:px-0">
             <div className="-mt-px w-0 flex-1 flex">
-              <a
-                href="#"
-                className="border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300"
-              >
-                <ArrowLeftIcon
-                  className="mr-3 h-5 w-5 text-gray-400"
-                  aria-hidden="true"
-                />
-                Anterior
-              </a>
+              {page !== 1 && (
+                <a
+                  href="#"
+                  className="border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                >
+                  <ArrowLeftIcon
+                    className="mr-3 h-5 w-5 text-gray-400"
+                    aria-hidden="true"
+                  />
+                  Anterior
+                </a>
+              )}
             </div>
             <div className="hidden md:-mt-px md:flex">
-              <a
-                href="#"
-                className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
-              >
-                1
-              </a>
+              {totalPage.map((page, idx) => {
+                return (
+                  <a
+                    key={page + idx}
+                    href="#"
+                    onClick={() => {
+                      router.push({
+                        pathname: "/produtos/",
+                        query: { ...router.query, page: page + 1 },
+                      });
+                    }}
+                    className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
+                  >
+                    {page + 1}
+                  </a>
+                );
+              })}
               {/* Current: "border-indigo-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" */}
-              <a
-                href="#"
-                className="border-gray-800 text-gray-800 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
-                aria-current="page"
-              >
-                2
-              </a>
-              <a
-                href="#"
-                className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
-              >
-                3
-              </a>
-              <span className="border-transparent text-gray-500 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium">
-                ...
-              </span>
-              <a
-                href="#"
-                className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
-              >
-                8
-              </a>
-              <a
-                href="#"
-                className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
-              >
-                9
-              </a>
-              <a
-                href="#"
-                className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
-              >
-                10
-              </a>
             </div>
             <div className="-mt-px w-0 flex-1 flex justify-end">
-              <a
-                href="#"
-                className="border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300"
-              >
-                Próximo
-                <ArrowRightIcon
-                  className="ml-3 h-5 w-5 text-gray-400"
-                  aria-hidden="true"
-                />
-              </a>
+              {totalPage.length > 1 && (
+                <a
+                  href="#"
+                  className="border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                >
+                  Próximo
+                  <ArrowRightIcon
+                    className="ml-3 h-5 w-5 text-gray-400"
+                    aria-hidden="true"
+                  />
+                </a>
+              )}
             </div>
           </nav>
         </section>
@@ -531,13 +474,16 @@ export default function Example(props: any) {
 }
 
 export async function getServerSideProps() {
-  const producs = await ProductHelper.getProductAll();
+  const products = await ProductHelper.getProductAll({});
+  const category = await CategoryHelper.getCategory();
 
-  const Producs = JSON.stringify(producs);
+  const Products = JSON.stringify(products);
+  const Category = JSON.stringify(category);
 
   return {
     props: {
-      products: Producs,
+      products: Products,
+      category: Category,
     },
   };
 }

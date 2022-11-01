@@ -20,10 +20,10 @@ interface SliderBanner {
 export function SliderCategory({ categoryDetails }: SliderBanner) {
   const router = useRouter();
 
-  function FromCategoryPage(nome: string) {
+  function FromCategoryPage(id: string) {
     router.push({
-      pathname: "/produtos",
-      query: { category: nome },
+      pathname: "/produtos/",
+      query: { category: id },
     });
   }
 
@@ -43,7 +43,7 @@ export function SliderCategory({ categoryDetails }: SliderBanner) {
             <div
               key={category.nome}
               onClick={() => {
-                FromCategoryPage(category.nome);
+                FromCategoryPage(category.idCategoria);
               }}
               className="relative w-56 h-80 rounded-lg p-6 flex flex-col overflow-hidden hover:opacity-75"
             >
