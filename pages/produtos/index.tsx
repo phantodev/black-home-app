@@ -29,6 +29,7 @@ interface product {
   slug: string;
   detalhe: string;
   cor: string;
+  resumo: string;
   medida: string;
   valor: string;
   estoque: string;
@@ -342,9 +343,6 @@ export default function Example(props: any) {
                   <div
                     aria-hidden="true"
                     className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden group-hover:opacity-75 lg:aspect-w-5 lg:aspect-h-6"
-                    onClick={() => {
-                      FromProductPage(collection.idProduto);
-                    }}
                   >
                     <img
                       src={`${collection.foto && collection.foto[0].urli}`}
@@ -355,13 +353,13 @@ export default function Example(props: any) {
                   <h3 className="mt-4 text-base font-semibold text-gray-900">
                     {collection.nome}
                   </h3>
-                  <p className="mt-2 text-sm text-gray-500">
-                    {collection.detalhe}
+                  <p className="mt-2 min-h-[40px] text-sm text-gray-500">
+                    {collection.resumo}
                   </p>
                   <p className="mt-2 text-2xl font-bold text-gray-500">
                     R$:{collection.valor},00
                   </p>
-                  <Link href={"#"}>
+                  <Link href={`/produtos/${collection.idProduto}`}>
                     <a className="mt-8 w-full block bg-gray-800 border border-transparent rounded-md py-3 px-8 text-base font-medium text-white hover:bg-gray-500 sm:w-auto">
                       Detalhes do Produto
                     </a>

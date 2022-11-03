@@ -29,10 +29,20 @@ export function SliderCategory({ categoryDetails }: SliderBanner) {
 
   return (
     <Swiper
-      slidesPerView={3}
-      spaceBetween={30}
+      slidesPerView={1}
+      spaceBetween={5}
       pagination={{
         clickable: true,
+      }}
+      breakpoints={{
+        500: {
+          slidesPerView: 2,
+          spaceBetween: 10,
+        },
+        700: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        },
       }}
       modules={[Pagination]}
       className="mySwiper"

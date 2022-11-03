@@ -18,7 +18,7 @@ const navigation = {
     { name: "Home", href: "/" },
     { name: "Empresa", href: "/empresa" },
     { name: "Pronta Entrega", href: "/produtos" },
-    { name: "Consultoria", href: "/" },
+    { name: "Consultoria", href: "#consultoria" },
     { name: "Contato", href: "/contato" },
   ],
 };
@@ -54,6 +54,7 @@ export default function Example(props: any) {
       detalhe: string;
       valor: string;
       href: string;
+      resumo: string;
     }
   ]);
 
@@ -265,7 +266,6 @@ export default function Example(props: any) {
               Acesse com exclusividade nossos últimos lançamentos de nossos
               produtos. Aproveite!
             </p>
-
             <div className="mt-10 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-x-8">
               {productMain.length > 0 &&
                 productMain.map((collection, idx) => (
@@ -273,9 +273,6 @@ export default function Example(props: any) {
                     <div
                       aria-hidden="true"
                       className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden group-hover:opacity-75 lg:aspect-w-5 lg:aspect-h-6"
-                      onClick={() => {
-                        FromProductPage(collection.idProduto);
-                      }}
                     >
                       <img
                         src={`${collection.foto && collection.foto[0].urli}`}
@@ -286,13 +283,13 @@ export default function Example(props: any) {
                     <h3 className="mt-4 text-base font-semibold text-gray-900">
                       {collection.nome}
                     </h3>
-                    <p className="mt-2 text-sm text-gray-500">
-                      {collection.detalhe}
+                    <p className="mt-2 min-h-[40px] text-sm text-gray-500">
+                      {collection.resumo}
                     </p>
                     <p className="mt-2 text-2xl font-bold text-gray-500">
                       R$: {collection.valor},00
                     </p>
-                    <Link href={"#"}>
+                    <Link href={`/produtos/${collection.idProduto}`}>
                       <a className="my-8 w-full block bg-gray-800 border border-transparent rounded-md py-3 px-8 text-base font-medium text-white hover:bg-gray-500 sm:w-auto">
                         Detalhes do Produto
                       </a>
@@ -344,7 +341,7 @@ export default function Example(props: any) {
                   className="w-full h-full object-center object-cover"
                 />
               </div>
-              <div className="relative bg-gray-900 bg-opacity-50 py-32 px-6 sm:py-40 sm:px-12 lg:px-16">
+              <div className="relative bg-gray-900 bg-opacity-50 py-32 px-6 sm:py-40 sm:px-12 lg:px-16"  id="consultoria">
                 <div className="relative max-w-3xl mx-auto flex flex-col items-center text-center">
                   <h2
                     id="social-impact-heading"
@@ -359,7 +356,7 @@ export default function Example(props: any) {
                     encomenda? Entre em contato conosco!
                   </p>
                   <a
-                    href="#"
+                    href="/contato"
                     className="mt-8 w-full block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto"
                   >
                     Entre em contato
