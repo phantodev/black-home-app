@@ -325,7 +325,9 @@ export default function Example(props: any) {
                     surpeenda-se!
                   </p>
                   <a
-                    href="#"
+                    href="https://3dwarehouse.sketchup.com/by/blackhomedesign"
+                    target={"_blank"}
+                    rel="noopener noreferrer"
                     className="mt-8 w-full block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto"
                   >
                     Ver Galeria
@@ -341,7 +343,10 @@ export default function Example(props: any) {
                   className="w-full h-full object-center object-cover"
                 />
               </div>
-              <div className="relative bg-gray-900 bg-opacity-50 py-32 px-6 sm:py-40 sm:px-12 lg:px-16"  id="consultoria">
+              <div
+                className="relative bg-gray-900 bg-opacity-50 py-32 px-6 sm:py-40 sm:px-12 lg:px-16"
+                id="consultoria"
+              >
                 <div className="relative max-w-3xl mx-auto flex flex-col items-center text-center">
                   <h2
                     id="social-impact-heading"
