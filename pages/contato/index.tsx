@@ -11,7 +11,6 @@ import { ToastContainer, toast } from "react-toastify";
 import { ProductHelper } from "../../server/helpers/product";
 import { useRouter } from "next/router";
 
-
 type Inputs = {
   full_name: string;
   email: string;
@@ -42,6 +41,7 @@ export default function Example(props: any) {
       detalhe: string;
       valor: string;
       href: string;
+      resumo: string;
     }
   ]);
 
@@ -388,11 +388,7 @@ export default function Example(props: any) {
             </p>
             <div className="mt-10 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-x-8">
               {productMain.map((collection) => (
-                <div key={collection.nome} onClick={()=>{
-                  router.push({
-                    pathname: "/produtos/" + collection.idProduto,
-                  });
-                }} className="group block">
+                <div key={collection.nome} className="group block">
                   <div
                     aria-hidden="true"
                     className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden group-hover:opacity-75 lg:aspect-w-5 lg:aspect-h-6"
@@ -406,13 +402,13 @@ export default function Example(props: any) {
                   <h3 className="mt-4 text-base font-semibold text-gray-900">
                     {collection.nome}
                   </h3>
-                  <p className="mt-2 text-sm text-gray-500">
-                    {collection.detalhe}
+                  <p className="mt-2 text-sm min-h-[40px]  text-gray-500">
+                    {collection.resumo}
                   </p>
                   <p className="mt-2 text-2xl font-bold text-gray-500">
                     R$: {collection.valor},00
                   </p>
-                  <Link href={"#"}>
+                  <Link href={`/produtos/${collection.idProduto}`}>
                     <a className="mt-8 w-full block bg-gray-800 border border-transparent rounded-md py-3 px-8 text-base font-medium text-white hover:bg-gray-500 sm:w-auto">
                       Detalhes do Produto
                     </a>
