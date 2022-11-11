@@ -16,7 +16,7 @@ type Inputs = {
 const navigation = {
   pages: [
     { name: "Home", href: "/" },
-    { name: "Empresa", href: "/empresa" },
+    { name: "Nossa Loja", href: "/empresa" },
     { name: "Pronta Entrega", href: "/produtos" },
     { name: "Consultoria", href: "/" },
     { name: "Contato", href: "/contato" },

@@ -16,7 +16,7 @@ import { useRouter } from "next/router";
 const navigation = {
   pages: [
     { name: "Home", href: "/" },
-    { name: "Empresa", href: "/empresa" },
+    { name: "Nossa Loja", href: "/empresa" },
     { name: "Pronta Entrega", href: "/produtos" },
     { name: "Consultoria", href: "#consultoria" },
     { name: "Contato", href: "/contato" },
@@ -244,7 +244,7 @@ export default function Example(props: any) {
 
             <div className="mt-4 flow-root">
               <div className="-my-2">
-                <div className="box-content py-2 relative h-80 overflow-x-auto xl:overflow-visible">
+                <div className="box-content py-2 relative h-90 overflow-x-auto xl:overflow-visible">
                   <SliderCategory categoryDetails={categoryDetails} />
                 </div>
               </div>
@@ -260,7 +260,7 @@ export default function Example(props: any) {
               id="collection-heading"
               className="text-3xl font-extrabold tracking-tight text-gray-900 flex justify-center"
             >
-              Produtos em Estoque
+              Pronta entrega
             </h2>
             <p className="mt-4 text-base text-gray-500 text-center">
               Acesse com exclusividade nossos últimos lançamentos de nossos
@@ -283,7 +283,7 @@ export default function Example(props: any) {
                     <h3 className="mt-4 text-base font-semibold text-gray-900">
                       {collection.nome}
                     </h3>
-                    <p className="mt-2 min-h-[40px] text-sm text-gray-500">
+                    <p className="mt-2 truncate text-sm text-gray-500">
                       {collection.resumo}
                     </p>
                     <p className="mt-2 text-2xl font-bold text-gray-500">
@@ -307,22 +307,25 @@ export default function Example(props: any) {
             <div className="relative rounded-lg overflow-hidden">
               <div className="absolute inset-0">
                 <img
-                  src="/sala.jpg"
+                  src="/image3D.jpeg"
                   alt=""
                   className="w-full h-full object-center object-cover"
                 />
               </div>
-              <div className="relative bg-gray-900 bg-opacity-50 py-32 px-6 sm:py-40 sm:px-12 lg:px-16">
-                <div className="relative max-w-3xl mx-auto flex flex-col items-center text-center">
+              <div className="relative h-full bg-gray-900 bg-opacity-50 py-32 px-6 sm:py-40 sm:px-12 lg:px-16">
+                <div className="relative h-full justify-center max-w-3xl mx-auto flex flex-col items-center text-center">
                   <h2
                     id="social-impact-heading"
                     className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl"
                   >
                     <span className="block sm:inline">Galeria em 3d</span>
                   </h2>
-                  <p className="mt-3 text-xl text-white">
-                    Visite a nossa galeria em 3d dos movéis criados por nós e
-                    surpeenda-se!
+                  <p className="mt-3  text-xl text-white">
+                    A Black Home Design conta agora com um serviço para ajudar
+                    na escolha perfeita do mobiliário para o seu projeto. Baixe
+                    gratuitamente nosso bloco na plataforma 3D Warehouse, onde
+                    vai encontrar diversos modelos e fornecedores, basta clicar
+                    aqui e ver a seleção que preparamos para você
                   </p>
                   <a
                     href="https://3dwarehouse.sketchup.com/by/blackhomedesign"
@@ -356,9 +359,20 @@ export default function Example(props: any) {
                       Faça uma consultoria!
                     </span>
                   </h2>
-                  <p className="mt-3 text-xl text-white">
-                    Precisa de um projeto especial ou algum móvel sobre
-                    encomenda? Entre em contato conosco!
+                  <p className="mt-3 text-justify text-xl text-white">
+                    Nosso trabalho de consultoria é fazer um diagnóstico do que
+                    você precisa, analisando o material que você nos enviou e,
+                    assim, poder te direcionar para os produtos certos.
+                    <br /> A consultoria de decoração é um serviço que tem como
+                    objetivo auxiliar o cliente em relação aos itens de
+                    decoração, sugestões de móveis, escolha dos tecidos e as
+                    cores.
+                    <br />
+                    Todavia, para este serviço de consultoria de decoração não é
+                    realizado um projeto digital mais técnico.
+                    <br /> Através do canal de atendimento do WhatsApp, iremos
+                    lhe auxiliar com sugestões de móveis soltos e decorações
+                    para o seu ambiente.
                   </p>
                   <a
                     href="/contato"

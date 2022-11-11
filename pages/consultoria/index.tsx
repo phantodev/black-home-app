@@ -2,37 +2,32 @@ import { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
-import { MapIcon, PhoneIcon } from "@heroicons/react/24/outline";
 import Footer from "../components/footer";
 import { NextSeo } from "next-seo";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { ContactHelper } from "../../server/helpers/contact";
-import { ToastContainer, toast } from "react-toastify";
+import { AboutHelper } from "../../server/helpers/about";
 import { ProductHelper } from "../../server/helpers/product";
-import { useRouter } from "next/router";
-
-type Inputs = {
-  full_name: string;
-  email: string;
-  phone: string;
-  message: string;
-};
 
 const navigation = {
   pages: [
     { name: "Home", href: "/" },
     { name: "Nossa Loja", href: "/empresa" },
     { name: "Pronta Entrega", href: "/produtos" },
-    { name: "Consultoria", href: "/" },
+    { name: "Consultoria", href: "/consultoria" },
     { name: "Contato", href: "/contato" },
   ],
 };
 
 export default function Example(props: any) {
-  const router = useRouter();
-
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+  const [text, setText] = useState([{}] as [
+    {
+      idTexto: string;
+      texto: string;
+      idTipoTexto: string;
+      nomeTipoTexto: string;
+      imagem: string;
+    }
+  ]);
   const [productMain, setProductMain] = useState([{}] as [
     {
       idProduto: string;
@@ -41,42 +36,19 @@ export default function Example(props: any) {
       detalhe: string;
       valor: string;
       href: string;
-      resumo: string;
     }
   ]);
 
   useEffect(() => {
+    setText(JSON.parse(props.text));
     setProductMain(JSON.parse(props.productMain));
   }, [props]);
-
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm<Inputs>();
-  const sendContactSubmit: SubmitHandler<Inputs> = async (data) => {
-    try {
-      const response = await ContactHelper.sendConcact({
-        nome: data.full_name,
-        email: data.email,
-        telefone: data.phone,
-        mensagem: data.message,
-      });
-      if (response === true) {
-        return toast.success("Mensagem enviada com sucesso!");
-      }
-      toast.error("Houve um error ao enviar a mensagem");
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <>
       <NextSeo
-        title="Black Home Design - Fale Conosco"
-        description="Entre em contato e faça seu projeto de design de interior conosco!"
+        title="Black Home Design - Empresa"
+        description="Conheça um pouco sobre a história da Black Home Design e toda a nossa experiência de mais de 15 anos de mercado!"
       />
       <div className="bg-white">
         {/* Mobile menu */}
@@ -221,165 +193,87 @@ export default function Example(props: any) {
 
           <div className="relative max-w-3xl mx-auto py-20 px-6 flex flex-col items-center text-center sm:py-20 lg:px-0">
             <h1 className="text-4xl font-extrabold tracking-tight text-white lg:text-6xl">
-              Fale Conosco
+              Consultoria
             </h1>
-            <p className="mt-4 text-xl text-white">
-              Dúvidas, sugestões, reclamações ou encomenda.
-            </p>
           </div>
         </div>
 
         <main>
           {/* Category section */}
 
+          {/* Featured section */}
           <section
-            aria-labelledby="category-heading"
-            className="pt-24 xl:max-w-7xl xl:mx-auto"
+            aria-labelledby="comfort-heading"
+            className="max-w-7xl mx-auto py-6 px-4"
           >
-            <div className="relative bg-white">
-              <div className="absolute inset-0">
-                <div className="absolute inset-y-0 left-0 w-1/2 bg-gray-100" />
-              </div>
-              <div className="relative max-w-7xl mx-auto lg:grid lg:grid-cols-5">
-                <div className="bg-gray-100 py-16 px-4 sm:px-6 lg:col-span-2 lg:px-8 lg:py-24 xl:pr-12">
-                  <div className="max-w-lg mx-auto">
-                    <h2 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
-                      Get in touch
-                    </h2>
-                    <p className="mt-3 text-lg leading-6 text-gray-500">
-                      A Black Home Design busca facilitar sua comunicação. Aqui
-                      você pode solicitar informações detalhadas sobre nossos
-                      produtos, tirar suas dúvidas ou mesmo enviar sugestões.
-                      Preencha seus dados corretamente no formulário e envie sua
-                      mensagem.
-                    </p>
-                    <dl className="mt-8 text-base text-gray-500">
-                      <div>
-                        <dt className="sr-only">Endereço</dt>
-                        <dd>
-                          <p>Rua Padre Anchieta, 458 - Mercês</p>
-                          <p>Curitiba - Paraná</p>
-                        </dd>
-                      </div>
-                      <div className="mt-6">
-                        <dt className="sr-only">Telefone</dt>
-                        <dd className="flex">
-                          <PhoneIcon
-                            className="flex-shrink-0 h-6 w-6 text-gray-400"
-                            aria-hidden="true"
+            <div className="relative bg-white py-10">
+              <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
+                <div className="relative sm:py-16 lg:py-0">
+                  <div
+                    aria-hidden="true"
+                    className="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen"
+                  >
+                    <div className="absolute inset-y-0 right-1/2 w-full bg-gray-50 rounded-r-3xl lg:right-72" />
+                    <svg
+                      className="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-auto lg:top-12"
+                      width={404}
+                      height={392}
+                      fill="none"
+                      viewBox="0 0 404 392"
+                    >
+                      <defs>
+                        <pattern
+                          id="02f20b47-fd69-4224-a62a-4c9de5c763f7"
+                          x={0}
+                          y={0}
+                          width={20}
+                          height={20}
+                          patternUnits="userSpaceOnUse"
+                        >
+                          <rect
+                            x={0}
+                            y={0}
+                            width={4}
+                            height={4}
+                            className="text-gray-200"
+                            fill="currentColor"
                           />
-                          <span className="ml-3">(41) 3503-1766</span>
-                        </dd>
-                        <dd className="flex">
-                          <PhoneIcon
-                            className="flex-shrink-0 h-6 w-6 text-gray-400"
-                            aria-hidden="true"
-                          />
-                          <span className="ml-3">(41) 99114-13157</span>
-                        </dd>
-                        <dd className="flex">
-                          <PhoneIcon
-                            className="flex-shrink-0 h-6 w-6 text-gray-400"
-                            aria-hidden="true"
-                          />
-                          <span className="ml-3">(41) 99765-0056</span>
-                        </dd>
-                      </div>
-                      <div className="mt-3">
-                        <dt className="sr-only">Email</dt>
-                        <dd className="flex">
-                          <MapIcon
-                            className="flex-shrink-0 h-6 w-6 text-gray-400"
-                            aria-hidden="true"
-                          />
-                          <span className="ml-3">
-                            contato@blackhomedesign.com
-                          </span>
-                        </dd>
-                      </div>
-                    </dl>
-                    <p className="mt-6 text-base text-gray-500">
-                      Quer trabalhar conosco?{" "}
-                      <a
-                        href="#"
-                        className="font-medium text-gray-700 underline"
-                      >
-                        Entre em contato aqui
-                      </a>
-                      .
-                    </p>
+                        </pattern>
+                      </defs>
+                      <rect
+                        width={404}
+                        height={392}
+                        fill="url(#02f20b47-fd69-4224-a62a-4c9de5c763f7)"
+                      />
+                    </svg>
+                  </div>
+                  <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0 lg:max-w-none lg:py-20">
+                    {/* Testimonial card*/}
+                    <div className="relative pt-64 pb-64 rounded-2xl shadow-xl overflow-hidden">
+                      <img
+                        className="absolute inset-0 h-full w-full object-cover"
+                        src={text[0].imagem}
+                        alt=""
+                      />
+                      <div className="absolute" />
+                    </div>
                   </div>
                 </div>
-                <div className="bg-gray-50 py-16 px-4 sm:px-6 lg:col-span-3 lg:py-24 lg:px-8 xl:pl-12">
-                  <div className="max-w-lg mx-auto lg:max-w-none">
-                    <form
-                      action="#"
-                      method="POST"
-                      onSubmit={handleSubmit(sendContactSubmit)}
-                      className="grid grid-cols-1 gap-y-6"
-                    >
-                      <div>
-                        <label htmlFor="full-name" className="sr-only">
-                          Nome Completo
-                        </label>
-                        <input
-                          type="text"
-                          {...register("full_name", { required: true })}
-                          id="full-name"
-                          autoComplete="name"
-                          className="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
-                          placeholder="Nome Completo"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="email" className="sr-only">
-                          Email
-                        </label>
-                        <input
-                          id="email"
-                          {...register("email", { required: true })}
-                          type="email"
-                          autoComplete="email"
-                          className="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
-                          placeholder="Email"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="phone" className="sr-only">
-                          Telefone
-                        </label>
-                        <input
-                          type="text"
-                          {...register("phone", { required: true })}
-                          id="phone"
-                          autoComplete="tel"
-                          className="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
-                          placeholder="Telefone"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="message" className="sr-only">
-                          Mensagem
-                        </label>
-                        <textarea
-                          id="message"
-                          {...register("message", { required: true })}
-                          rows={4}
-                          className="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 rounded-md"
-                          placeholder="Mensagem"
-                          defaultValue={""}
-                        />
-                      </div>
-                      <div>
-                        <button
-                          type="submit"
-                          className="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        >
-                          Enviar Mensagem
-                        </button>
-                      </div>
-                    </form>
+
+                <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0">
+                  {/* Content area */}
+                  <div className="pt-12 sm:pt-16 lg:pt-20">
+                    <div
+                      dangerouslySetInnerHTML={{ __html: text[0].texto }}
+                      className="mt-6 text-gray-500 space-y-6"
+                    ></div>
                   </div>
+                  <a
+                    href="/contato"
+                    className="mt-8 justify-center flex w-full block bg-gray-800 border border-transparent rounded-md py-3 px-8 text-base font-medium text-white hover:bg-gray-500 sm:w-auto"
+                  >
+                    Entre em contato
+                  </a>
                 </div>
               </div>
             </div>
@@ -417,13 +311,13 @@ export default function Example(props: any) {
                   <h3 className="mt-4 text-base font-semibold text-gray-900">
                     {collection.nome}
                   </h3>
-                  <p className="mt-2 text-sm min-h-[40px]  text-gray-500">
-                    {collection.resumo}
+                  <p className="mt-2 truncate text-sm text-gray-500">
+                    {collection.detalhe}
                   </p>
                   <p className="mt-2 text-2xl font-bold text-gray-500">
-                    R$: {collection.valor},00
+                    R$:{collection.valor},00
                   </p>
-                  <Link href={`/produtos/${collection.idProduto}`}>
+                  <Link href={"#"}>
                     <a className="mt-8 w-full block bg-gray-800 border border-transparent rounded-md py-3 px-8 text-base font-medium text-white hover:bg-gray-500 sm:w-auto">
                       Detalhes do Produto
                     </a>
@@ -478,28 +372,22 @@ export default function Example(props: any) {
           <Footer />
         </footer>
       </div>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
     </>
   );
 }
 
 export async function getServerSideProps() {
   const productMain = await ProductHelper.getProductMain();
+  const text = await AboutHelper.getAbout();
 
   const ProductMain = JSON.stringify(productMain);
+  const Text = JSON.stringify(
+    text.filter((text: any) => text.nomeTipoTexto === "Consultoria")
+  );
+
   return {
     props: {
+      text: Text,
       productMain: ProductMain,
     },
   };

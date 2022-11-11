@@ -10,7 +10,7 @@ import { ProductHelper } from "../../server/helpers/product";
 const navigation = {
   pages: [
     { name: "Home", href: "/" },
-    { name: "Empresa", href: "/empresa" },
+    { name: "Nossa Loja", href: "/empresa" },
     { name: "Pronta Entrega", href: "/produtos" },
     { name: "Consultoria", href: "/" },
     { name: "Contato", href: "/contato" },
@@ -311,7 +311,7 @@ export default function Example(props: any) {
                   <h3 className="mt-4 text-base font-semibold text-gray-900">
                     {collection.nome}
                   </h3>
-                  <p className="mt-2 text-sm text-gray-500">
+                  <p className="mt-2 truncate text-sm text-gray-500">
                     {collection.detalhe}
                   </p>
                   <p className="mt-2 text-2xl font-bold text-gray-500">
