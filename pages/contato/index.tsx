@@ -23,7 +23,7 @@ const navigation = {
     { name: "Home", href: "/" },
     { name: "Nossa Loja", href: "/empresa" },
     { name: "Pronta Entrega", href: "/produtos" },
-    { name: "Consultoria", href: "/" },
+    { name: "Consultoria", href: "/consultoria" },
     { name: "Contato", href: "/contato" },
   ],
 };
@@ -417,7 +417,7 @@ export default function Example(props: any) {
                   <h3 className="mt-4 text-base font-semibold text-gray-900">
                     {collection.nome}
                   </h3>
-                  <p className="mt-2 text-sm min-h-[40px]  text-gray-500">
+                  <p className="mt-2 text-sm min-h-[40px] truncate text-gray-500">
                     {collection.resumo}
                   </p>
                   <p className="mt-2 text-2xl font-bold text-gray-500">

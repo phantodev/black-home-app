@@ -36,10 +36,14 @@ export function SliderCategory({ categoryDetails }: SliderBanner) {
       }}
       breakpoints={{
         500: {
+          slidesPerView: 2,
+          spaceBetween: 10,
+        },
+        750: {
           slidesPerView: 3,
           spaceBetween: 10,
         },
-        700: {
+        1000: {
           slidesPerView: 4,
           spaceBetween: 30,
         },

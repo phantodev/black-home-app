@@ -18,7 +18,7 @@ const navigation = {
     { name: "Home", href: "/" },
     { name: "Nossa Loja", href: "/empresa" },
     { name: "Pronta Entrega", href: "/produtos" },
-    { name: "Consultoria", href: "/" },
+    { name: "Consultoria", href: "/consultoria" },
     { name: "Contato", href: "/contato" },
   ],
 };

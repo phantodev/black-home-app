@@ -12,7 +12,7 @@ const navigation = {
     { name: "Home", href: "/" },
     { name: "Nossa Loja", href: "/empresa" },
     { name: "Pronta Entrega", href: "/produtos" },
-    { name: "Consultoria", href: "/" },
+    { name: "Consultoria", href: "/consultoria" },
     { name: "Contato", href: "/contato" },
   ],
 };
@@ -218,7 +218,7 @@ export default function Example(props: any) {
                   >
                     <div className="absolute inset-y-0 right-1/2 w-full bg-gray-50 rounded-r-3xl lg:right-72" />
                     <svg
-                      className="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-auto lg:top-12"
+                      className="absolute top-8  -ml-3 lg:-right-8 lg:left-auto lg:top-12"
                       width={404}
                       height={392}
                       fill="none"
