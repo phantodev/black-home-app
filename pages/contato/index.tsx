@@ -7,7 +7,7 @@ import Footer from "../components/footer";
 import { NextSeo } from "next-seo";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ContactHelper } from "../../server/helpers/contact";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { ProductHelper } from "../../server/helpers/product";
 import { useRouter } from "next/router";
 
@@ -478,18 +478,6 @@ export default function Example(props: any) {
           <Footer />
         </footer>
       </div>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
     </>
   );
 }
