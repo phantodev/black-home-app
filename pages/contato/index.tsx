@@ -54,6 +54,7 @@ export default function Example(props: any) {
     handleSubmit,
     watch,
     formState: { errors },
+    reset,
   } = useForm<Inputs>();
   const sendContactSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
@@ -64,6 +65,7 @@ export default function Example(props: any) {
         mensagem: data.message,
       });
       if (response === true) {
+        reset();
         return toast.success("Mensagem enviada com sucesso!");
       }
       toast.error("Houve um error ao enviar a mensagem");

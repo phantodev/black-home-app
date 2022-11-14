@@ -13,6 +13,7 @@ export default function Footer() {
     handleSubmit,
     watch,
     formState: { errors },
+    reset
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
@@ -21,6 +22,7 @@ export default function Footer() {
         email: data.email,
       });
       if (response === true) {
+        reset()
         return toast.success("Inscrito com sucesso!");
       }
       toast.error("Houve um error ao enviar a mensagem");
