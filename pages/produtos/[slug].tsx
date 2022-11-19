@@ -285,12 +285,12 @@ export default function Example(props: any) {
 
                           <form>
                             <div className="mt-6">
-                              <button
-                                type="submit"
+                              <a
+                                href="https://api.whatsapp.com/send?phone=5541997650056&text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20seus%20produtos!"
                                 className="w-full bg-gray-800 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-800"
                               >
                                 Fazer uma encomenda
-                              </button>
+                              </a>
                             </div>
                           </form>
                         </section>
@@ -378,7 +378,7 @@ export default function Example(props: any) {
                     compromisso com nossa equipe de atendimento!
                   </p>
                   <a
-                    href="#"
+                    href="https://api.whatsapp.com/send?phone=5541997650056&text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20seus%20produtos!"
                     className="mt-8 w-full block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto"
                   >
                     Quero encomendar

@@ -447,7 +447,7 @@ export default function Example(props: any) {
                   com nossa equipe de atendimento!
                 </p>
                 <a
-                  href="#"
+                  href="https://api.whatsapp.com/send?phone=5541997650056&text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20seus%20produtos!"
                   className="mt-8 w-full block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto"
                 >
                   Quero encomendar

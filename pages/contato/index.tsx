@@ -246,7 +246,7 @@ export default function Example(props: any) {
                 <div className="bg-gray-100 py-16 px-4 sm:px-6 lg:col-span-2 lg:px-8 lg:py-24 xl:pr-12">
                   <div className="max-w-lg mx-auto">
                     <h2 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
-                      Get in touch
+                      Entre em contato
                     </h2>
                     <p className="mt-3 text-lg leading-6 text-gray-500">
                       A Black Home Design busca facilitar sua comunicação. Aqui
@@ -277,7 +277,7 @@ export default function Example(props: any) {
                             className="flex-shrink-0 h-6 w-6 text-gray-400"
                             aria-hidden="true"
                           />
-                          <span className="ml-3">(41) 99114-13157</span>
+                          <span className="ml-3">(41) 99114-1315</span>
                         </dd>
                         <dd className="flex">
                           <PhoneIcon
@@ -303,7 +303,7 @@ export default function Example(props: any) {
                     <p className="mt-6 text-base text-gray-500">
                       Quer trabalhar conosco?{" "}
                       <a
-                        href="#"
+                        href="https://api.whatsapp.com/send?phone=5541997650056&text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20seus%20produtos!"
                         className="font-medium text-gray-700 underline"
                       >
                         Entre em contato aqui
@@ -462,7 +462,7 @@ export default function Example(props: any) {
                     compromisso com nossa equipe de atendimento!
                   </p>
                   <a
-                    href="#"
+                    href="https://api.whatsapp.com/send?phone=5541997650056&text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20seus%20produtos!"
                     className="mt-8 w-full block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto"
                   >
                     Quero encomendar
