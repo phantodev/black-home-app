@@ -10,9 +10,9 @@ import { useRouter } from "next/router";
 
 const navigation = {
   pages: [
-    { name: "Nossa Loja", href: "#" },
-    { name: "Nossos Produtos", href: "#" },
-    { name: "Fale Conosco", href: "#" },
+    { name: "Nossa Loja", href: "/empresa" },
+    { name: "Pronta Entrega", href: "/produtos" },
+    { name: "Contato", href: "/contato" },
   ],
 };
 
@@ -27,6 +27,7 @@ export default function Example(props: any) {
       detalhe: string;
       valor: string;
       href: string;
+      estoque: string;
     }
   );
   const [productMain, setProductMain] = useState([{}] as [
@@ -37,6 +38,7 @@ export default function Example(props: any) {
       detalhe: string;
       valor: string;
       href: string;
+      estoque: string;
     }
   ]);
 
@@ -338,9 +340,13 @@ export default function Example(props: any) {
                     <p className="mt-2 truncate text-sm text-gray-500">
                       {collection.detalhe}
                     </p>
+
                     <p className="mt-2 text-2xl font-bold text-gray-500">
                       R$:{collection.valor},00
                     </p>
+                    <h3 className="text-base h-[10px] font-semibold text-gray-900">
+                      {collection.estoque === "SIM" ? "*Em Estoque" : ""}
+                    </h3>
                     <Link href={`/produtos/${collection.idProduto}`}>
                       <a className="mt-8 w-full block bg-gray-800 border border-transparent rounded-md py-3 px-8 text-base font-medium text-white hover:bg-gray-500 sm:w-auto">
                         Detalhes do Produto

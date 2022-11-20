@@ -359,6 +359,9 @@ export default function Example(props: any) {
                   <p className="mt-2 text-2xl font-bold text-gray-500">
                     R$:{collection.valor},00
                   </p>
+                  <h3 className="text-base h-[10px] font-semibold text-gray-900">
+                    {collection.estoque === "SIM" ? "*Em Estoque" : ""}
+                  </h3>
                   <Link href={`/produtos/${collection.idProduto}`}>
                     <a className="mt-8 w-full block bg-gray-800 border border-transparent rounded-md py-3 px-8 text-base font-medium text-white hover:bg-gray-500 sm:w-auto">
                       Detalhes do Produto
