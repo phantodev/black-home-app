@@ -23,8 +23,8 @@ export class ProductHelper {
   }
   static async getProductDetails(id: string) {
     try {
-      const { data } = await api.post("/getProdutoDetalhe", {
-        idProduto: id,
+      const { data } = await api.post("/getProdutoDetalheBySlug", {
+        slug: id,
       });
       return data;
     } catch (error) {

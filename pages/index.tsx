@@ -56,6 +56,7 @@ export default function Example(props: any) {
       valor: string;
       href: string;
       resumo: string;
+      slug: string;
     }
   ]);
 
@@ -69,7 +70,6 @@ export default function Example(props: any) {
       imagem: string;
     }
   ]);
-
 
   useEffect(() => {
     setBannerDetails(JSON.parse(props.bannerDetails));
@@ -294,7 +294,7 @@ export default function Example(props: any) {
                     <h3 className="text-base h-[10px] font-semibold text-gray-900">
                       {collection.estoque === "SIM" ? "*Em Estoque" : ""}
                     </h3>
-                    <Link href={`/produtos/${collection.idProduto}`}>
+                    <Link href={`/produtos/${collection.slug}`}>
                       <a className="my-8 w-full block bg-gray-800 border border-transparent rounded-md py-3 px-8 text-base font-medium text-white hover:bg-gray-500 sm:w-auto">
                         Detalhes do Produto
                       </a>

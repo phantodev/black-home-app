@@ -40,6 +40,7 @@ export default function Example(props: any) {
       detalhe: string;
       valor: string;
       href: string;
+      slug: string;
     }
   ]);
 
@@ -264,7 +265,7 @@ export default function Example(props: any) {
                   <p className="mt-2 text-2xl font-bold text-gray-500">
                     R$:{collection.valor},00
                   </p>
-                  <Link href={"#"}>
+                  <Link href={collection.slug}>
                     <a className="mt-8 w-full block bg-gray-800 border border-transparent rounded-md py-3 px-8 text-base font-medium text-white hover:bg-gray-500 sm:w-auto">
                       Detalhes do Produto
                     </a>
