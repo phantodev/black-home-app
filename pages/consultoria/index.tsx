@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState, useId } from "react";
 import Link from "next/link";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
@@ -319,7 +319,7 @@ export default function Example(props: any) {
                     R$:{collection.valor},00
                   </p>
                   <Link href={`/produtos/${collection.slug}`}>
-                    <a className="mt-8 w-full block bg-gray-800 border border-transparent rounded-md py-3 px-8 text-base font-medium text-white hover:bg-gray-500 sm:w-auto">
+                    <a className="my-8 w-full block bg-gray-800 border border-transparent rounded-md py-3 px-8 text-base font-medium text-white hover:bg-gray-500 sm:w-auto">
                       Detalhes do Produto
                     </a>
                   </Link>
