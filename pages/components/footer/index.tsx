@@ -13,7 +13,7 @@ export default function Footer() {
     handleSubmit,
     watch,
     formState: { errors },
-    reset
+    reset,
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
@@ -22,7 +22,7 @@ export default function Footer() {
         email: data.email,
       });
       if (response === true) {
-        reset()
+        reset();
         return toast.success("Inscrito com sucesso!");
       }
       toast.error("Houve um error ao enviar a mensagem");
@@ -49,10 +49,22 @@ export default function Footer() {
                     41 3503-1766
                   </li>
                   <li className="text-base text-gray-300 hover:text-white">
-                    41 99114-1315
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://api.whatsapp.com/send?phone=5541991141315&text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20seus%20produtos!"
+                    >
+                      41 99114-1315
+                    </a>
                   </li>
                   <li className="text-base text-gray-300 hover:text-white">
-                    41 99765-0056
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://api.whatsapp.com/send?phone=5541997650056&text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20seus%20produtos!"
+                    >
+                      41 99765-0056
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -141,7 +153,13 @@ export default function Footer() {
                 <img src="/facebook-icon.png" alt="" className="" />
               </button>
               <button type="button" className="-ml-2 p-2 text-white">
-                <img src="/zap-icon.png" alt="" className="" />
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://api.whatsapp.com/send?phone=5541997650056&text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20seus%20produtos!"
+                >
+                  <img src="/zap-icon.png" alt="" className="" />
+                </a>
               </button>
             </p>
           </div>
