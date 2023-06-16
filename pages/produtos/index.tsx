@@ -68,6 +68,8 @@ export default function Example(props: any) {
 
   const [page, setPage] = useState(1);
 
+  console.log(dataProducts);
+
   useEffect(() => {
     if (router.query.category) {
       const Query = router.query.category;
@@ -92,6 +94,7 @@ export default function Example(props: any) {
     for (let i = 0; i < Products[0].paginaTotal; i++) {
       TotalPage.push(i);
     }
+    console.log(TotalPage);
     setTotalPage(TotalPage);
   }, [props]);
 
@@ -99,6 +102,11 @@ export default function Example(props: any) {
     try {
       const products = await ProductHelper.getProductAll({ idCategoria: id });
       setDataProducts(products);
+      const TotalPage = [];
+      for (let i = 0; i < products[0].paginaTotal; i++) {
+        TotalPage.push(i);
+      }
+      setTotalPage(TotalPage);
     } catch (error) {
       console.log(error);
     }
