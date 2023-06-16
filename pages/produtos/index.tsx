@@ -68,16 +68,16 @@ export default function Example(props: any) {
 
   const [page, setPage] = useState(1);
 
-
-
   useEffect(() => {
     if (router.query.category) {
       const Query = router.query.category;
       setCategory(Query);
       setValue("category", String(Query));
       fiterProduct(Query);
+    } else {
+      fiterProduct("");
     }
-  }, [router, categoryList]);
+  }, [router?.query?.category, router?.query?.page, categoryList]);
 
   useEffect(() => {
     if (router.query.page) {
@@ -94,13 +94,15 @@ export default function Example(props: any) {
     for (let i = 0; i < Products[0].paginaTotal; i++) {
       TotalPage.push(i);
     }
-    console.log(TotalPage);
     setTotalPage(TotalPage);
   }, [props]);
 
   async function fiterProduct(id: any) {
     try {
-      const products = await ProductHelper.getProductAll({ idCategoria: id });
+      const products = await ProductHelper.getProductAll({
+        idCategoria: id,
+        page,
+      });
       setDataProducts(products);
       const TotalPage = [];
       for (let i = 0; i < products[0].paginaTotal; i++) {
