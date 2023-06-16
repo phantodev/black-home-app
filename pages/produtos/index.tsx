@@ -68,7 +68,7 @@ export default function Example(props: any) {
 
   const [page, setPage] = useState(1);
 
-  console.log(dataProducts);
+
 
   useEffect(() => {
     if (router.query.category) {
